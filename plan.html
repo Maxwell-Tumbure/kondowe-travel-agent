@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preload" as="image" href="pictures/FLIGHT OF ANGELS.jpg" fetchpriority="high">
+<title>Kondohwe Travel Agent — Plan Your Victoria Falls Trip</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#FBF8F2; --sand:#EFE6D4; --forest:#233826; --forest-2:#101814;
+  --bronze:#A66F30; --bronze-light:#D9A462; --ink:#1b2119;
+  --line-light: rgba(27,33,25,0.10); --line-dark: rgba(27,33,25,0.12);
+  --glass: rgba(255,255,255,0.06);
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{ background:var(--ivory); color:var(--ink); font-family:'Work Sans', sans-serif; -webkit-font-smoothing:antialiased; }
+h1,h2,h3{ font-family:'Fraunces', serif; font-weight:450; }
+.wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+.eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; display:flex; align-items:center; gap:10px; color:var(--bronze); }
+.eyebrow::before{ content:""; width:20px; height:1px; background:var(--bronze); }
+
+/* HEADER & NAV */
+header.nav{ position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(26, 36, 28, 0.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--line-dark); }
+.nav-inner{ max-width:1180px; margin:0 auto; padding:18px 32px; display:flex; align-items:center; justify-content:space-between; }
+.logo{ display:flex; flex-direction:column; line-height:1; text-decoration:none; }
+.logo .name{ font-family:'Fraunces', serif; font-size:20px; color:var(--ivory); }
+.logo .tag{ font-family:'IBM Plex Mono', monospace; font-size:9px; letter-spacing:0.16em; color:var(--bronze-light); margin-top:4px; text-transform:uppercase; }
+nav.links{ display:flex; gap:34px; align-items:center; }
+nav.links a{ font-size:13px; text-decoration:none; color:var(--ivory); opacity:0.9; padding:6px 0; border-bottom:1px solid transparent; transition:opacity .2s, border-color .2s; }
+nav.links a:hover, nav.links a.active{ opacity:1; border-color:var(--bronze-light); }
+nav.links a.cta{ opacity:1; background:var(--bronze); color:var(--forest-2); padding:10px 20px; font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; font-weight:500; }
+  nav.links a.cta{ box-shadow:0 8px 24px rgba(0,0,0,0.12); }
+.hamburger{ display:none; flex-direction:column; justify-content:space-between; width:26px; height:18px; background:none; border:none; cursor:pointer; z-index:110; }
+.hamburger span{ width:100%; height:2px; background:var(--ivory); transition:all 0.3s ease; }
+.hamburger.open span:nth-child(1){ transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2){ opacity:0; }
+.hamburger.open span:nth-child(3){ transform: translateY(-8px) rotate(-45deg); }
+@media (max-width:860px){
+  .hamburger{ display:flex; }
+  nav.links{ position:fixed; top:0; right:-100%; width:80%; max-width:320px; height:100vh; background:var(--forest-2); flex-direction:column; justify-content:center; gap:28px; padding:40px; transition:right 0.35s ease; }
+  nav.links.open{ right:0; }
+  nav.links a{ font-size:16px; }
+}
+
+.page-head{
+  padding:160px 0 60px;
+  background:
+    linear-gradient(180deg, rgba(26,36,28,0.72) 0%, rgba(26,36,28,0.84) 100%),
+    url("pictures/FLIGHT OF ANGELS.jpg") center/cover no-repeat;
+  color:var(--ivory);
+}
+.page-head h1{ font-size:clamp(36px, 6vw, 64px); margin-top:12px; }
+.page-head p{ color:rgba(251,248,241,0.8); max-width:600px; margin-top:14px; font-size:17px; line-height:1.6; }
+
+.plan-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:32px; padding:80px 0; }
+.plan-item{ background:var(--sand); padding:32px; border:1px solid var(--line-light); }
+.plan-item h3{ font-size:22px; color:var(--forest); margin-top:10px; }
+.plan-item p{ font-size:14px; line-height:1.6; color:rgba(34,40,31,0.8); margin-top:10px; }
+
+.footer{ background:var(--forest-2); color:rgba(251,248,241,0.55); padding:32px 0; border-top:1px solid var(--line-dark); }
+.footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; font-family:'IBM Plex Mono', monospace; font-size:11px; }
+
+  
+</style>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="site-page">
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="name">Kondohwe</span>
+      <span class="tag">Travel Agent</span>
+    </a>
+    <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="links" id="nav-links">
+      <a href="index.html">Activities</a>
+      <a href="accommodations.html">Accommodations</a>
+      <a href="seasons.html">Seasons</a>
+      <a href="plan.html" class="active">Plan</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="wrap">
+      <p class="eyebrow" style="color:var(--bronze-light);">Essential Information</p>
+      <h1>Travel Logistics & Tips</h1>
+      <p>Visas, entry points, currencies, and essential advice for visiting Zimbabwe and Zambia.</p>
+  </div>
+</section>
+
+<div class="wrap plan-grid">
+  <div class="plan-item">
+    <span class="eyebrow">Border Crossing</span>
+    <h3>KAZA UniVisa</h3>
+    <p>Allows unlimited travel between Zimbabwe and Zambia for up to 30 days, including day trips to Botswana via Kazungula.</p>
+  </div>
+  <div class="plan-item">
+    <span class="eyebrow">Currency</span>
+    <h3>US Dollars & Cards</h3>
+    <p>US Dollars are widely accepted in both Victoria Falls (Zimbabwe) and Livingstone (Zambia). Visa and Mastercard are used in major hotels.</p>
+  </div>
+  <div class="plan-item">
+    <span class="eyebrow">Health & Safety</span>
+    <h3>Malaria Precautions</h3>
+    <p>Victoria Falls is a low-to-moderate risk malaria area. Mosquito repellent and prophylaxis are strongly recommended during rainy months.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>KONDOHWE TRAVEL AGENT · VICTORIA FALLS</span>
+    <span>ZIMBABWE · ZAMBIA · BOTSWANA</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn = document.getElementById('hamburger-btn');
+  var menu = document.getElementById('nav-links');
+  if(btn && menu){
+    btn.addEventListener('click', function(){ btn.classList.toggle('open'); menu.classList.toggle('open'); });
+    menu.querySelectorAll('a').forEach(function(link){ link.addEventListener('click', function(){ btn.classList.remove('open'); menu.classList.remove('open'); }); });
+  }
+})();
+</script>
+<a href="https://wa.me/263776840785?text=Hello%20Victoria%20Falls%20team%2C%20I%20would%20like%20to%20ask%20about%20activity%20bookings%20and%20accommodation%20options." class="btn-whatsapp whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contact on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.272-.1-.47-.149-.67.149s-.767.967-.94 1.166c-.173.199-.347.223-.644.075-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.173.198-.298.298-.497.099-.199.05-.373-.025-.522-.075-.149-.67-1.612-.92-2.207-.242-.579-.487-.5-.67-.51l-.571-.01c-.199 0-.522.075-.796.373s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.075-.124-.272-.199-.57-.348z" fill="currentColor"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.004 2.003C6.478 2.003 2.004 6.478 2.004 12c0 2.115.69 4.105 1.876 5.727L2 22l4.47-1.169A9.937 9.937 0 0 0 12.004 22c5.526 0 10.001-4.475 10.001-10S17.53 2.003 12.004 2.003zm0 18.03c-1.54 0-3.03-.403-4.312-1.165l-.308-.184-2.643.693.706-2.576-.2-.33A7.971 7.971 0 0 1 4.004 12c0-4.418 3.586-8.002 8-8.002 4.417 0 8.001 3.585 8.001 8.002 0 4.418-3.584 8.001-8.001 8.001z" fill="currentColor"/>
+  </svg>
+</a>
+</body>
+</html>

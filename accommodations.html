@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kondohwe Travel Agent — Victoria Falls Accommodation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.africanreservations.com">
+<link rel="preconnect" href="https://cdn.mahlatini.com">
+<link rel="preconnect" href="https://cdn2.rhinoafrica.com">
+<link rel="preconnect" href="https://matetsivictoriafalls.com">
+<link rel="preconnect" href="https://cdn.sanity.io">
+<link rel="preconnect" href="https://www.voyagerszambia.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="pictures/VIC FALLS.avif" fetchpriority="high">
+<style>
+:root{
+  --ivory:#FBF8F2; --sand:#EFE6D4; --forest:#233826; --forest-2:#101814;
+  --bronze:#A66F30; --bronze-light:#D9A462; --ink:#1b2119; --line-light: rgba(27,33,25,0.10);
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{ background:var(--ivory); color:var(--ink); font-family:'Work Sans', sans-serif; -webkit-font-smoothing:antialiased; }
+h1,h2,h3{ font-family:'Fraunces', serif; font-weight:450; }
+.wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+.eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--bronze-light); display:flex; align-items:center; gap:10px; }
+
+/* NAV */
+header.nav{ position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(26,36,28,0.88); backdrop-filter:blur(10px); border-bottom:1px solid var(--line-light); }
+.nav-inner{ max-width:1180px; margin:0 auto; padding:18px 32px; display:flex; align-items:center; justify-content:space-between; }
+.logo{ display:flex; flex-direction:column; line-height:1; text-decoration:none; }
+.logo .name{ font-family:'Fraunces', serif; font-size:20px; color:var(--ivory); }
+nav.links{ display:flex; gap:28px; align-items:center; }
+nav.links a{ font-size:13px; color:var(--ivory); opacity:0.9; text-decoration:none; padding:6px 0; border-bottom:1px solid transparent; }
+nav.links a:hover, nav.links a.active{ opacity:1; border-color:var(--bronze-light); }
+nav.links a.cta{ background: linear-gradient(180deg,var(--bronze),var(--bronze-light)); color:var(--forest-2); padding:10px 18px; border-radius:8px; }
+
+/* Hamburger Icon Toggle (matches other pages) */
+.hamburger{ display:none; flex-direction:column; justify-content:space-between; width:26px; height:18px; background:none; border:none; cursor:pointer; z-index:110; }
+.hamburger span{ width:100%; height:2px; background:var(--ivory); transition:all 0.3s ease; }
+.hamburger.open span:nth-child(1){ transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2){ opacity:0; }
+.hamburger.open span:nth-child(3){ transform: translateY(-8px) rotate(-45deg); }
+
+@media (max-width:860px){
+  .hamburger{ display:flex; }
+  nav.links{
+    position:fixed; top:0; right:-100%; width:80%; max-width:320px; height:100vh;
+    background:var(--forest-2); flex-direction:column; justify-content:center;
+    gap:28px; padding:40px; transition:right 0.35s ease; box-shadow:-10px 0 30px rgba(0,0,0,0.5);
+  }
+  nav.links.open{ right:0; }
+  nav.links a{ font-size:16px; }
+}
+
+.page-head{ padding:160px 0 60px; background: linear-gradient(180deg, rgba(16,20,16,0.6), rgba(16,20,16,0.85)), url('pictures/VIC FALLS.avif') center/cover no-repeat; color:var(--ivory); }
+.page-head h1{ font-size:clamp(34px,5vw,56px); }
+
+.accom-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:28px; padding:60px 0; }
+.accom-card{ background:var(--ivory); border:1px solid var(--line-light); border-radius:16px; overflow:hidden; box-shadow:0 24px 60px rgba(16,18,14,0.06); transition:transform .25s ease, box-shadow .25s ease; }
+.accom-card:hover{ transform:translateY(-8px); box-shadow:0 36px 80px rgba(16,18,14,0.12); }
+.accom-media{ height:220px; background-size:cover; background-position:center; }
+.accom-body{ padding:22px; }
+.accom-title{ font-size:20px; margin-bottom:6px; color:var(--forest); }
+.accom-meta{ display:flex; gap:10px; align-items:center; margin-bottom:12px; }
+.accom-meta .badge{ font-family:'IBM Plex Mono', monospace; font-size:11px; padding:8px 10px; background:var(--sand); border-radius:999px; color:var(--forest); }
+.accom-desc{ font-size:14px; line-height:1.6; color:rgba(27,33,25,0.8); margin-bottom:14px; }
+.accom-actions{ display:flex; gap:12px; align-items:center; }
+.small{ font-size:13px; color:rgba(27,33,25,0.7); }
+
+.footer{ padding:48px 0; text-align:center; color:rgba(27,33,25,0.6); }
+
+  
+  </style>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="name">Kondohwe</span><span class="tag">Travel Agent</span></a>
+    <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="links" id="nav-links">
+      <a href="index.html">Activities</a>
+      <a href="accommodations.html" class="active">Accommodations</a>
+      <a href="seasons.html">Seasons</a>
+      <a href="plan.html">Plan</a>
+    <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Stay & Sleep</p>
+    <h1>Handpicked Places To Stay — From Luxury Lodges to Riverside Camps</h1>
+    <p class="small">Curated options with an emphasis on location, comfort, and authentic experience. Use the contact button to enquire or book.</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="accom-grid">
+    <h2 id="luxury" style="margin-top:18px;">Luxury & High-end</h2>
+
+    <!-- Luxury entries -->
+    <article class="accom-card">
+      <div class="accom-media bg-lazy" data-bg="https://www.africanreservations.com/sites/default/files/2024-07/the_victoria_falls_hotel_exterior.jpg"></div>
+      <div class="accom-body">
+        <div class="accom-title">Victoria Falls Hotel</div>
+        <div class="accom-meta"><span class="badge">Heritage</span></div>
+        <p class="accom-desc">Historic landmark hotel with classic suites and prime falls views.</p>
+        <div class="accom-actions"><a href="contact.html?property=Victoria%20Falls%20Hotel" class="cta">Enquire</a></div>
+      </div>
+    </article>
+
+    <article class="accom-card">
+      <div class="accom-media bg-lazy" data-bg="https://cdn.mahlatini.com/destinations/zambia/livingstone-and-victoria-falls/tongabezi-lodge/_1280x900_crop_center-center_none/tongabezi-lodge-the-bird-house-pool-and-deck-1280.jpg"></div>
+      <div class="accom-body">
+        <div class="accom-title">Tongabezi Lodge</div>
+        <div class="accom-meta"><span class="badge">Exclusive</span></div>
+        <p class="accom-desc">Private river-front villas with personalized service and transfers.</p>
+        <div class="accom-actions"><a href="contact.html?property=Tongabezi%20Lodge" class="cta">Enquire</a></div>
+      </div>
+    </article>
+
+    <article class="accom-card">
+      <div class="accom-media bg-lazy" data-bg="https://cdn2.rhinoafrica.com/thumbnails/objects/service-providers/royal-livingstone/_img/38314/image-thumb__38314__background-cover/royal-livingstone-exteriors-entrance-01.6fdfbf59.jpg"></div>
+      <div class="accom-body">
+        <div class="accom-title">Royal Livingstone (Zambia)</div>
+        <div class="accom-meta"><span class="badge">Grand</span></div>
+        <p class="accom-desc">Grand riverside hotel on the Zambian side — ideal for cross-border travellers.</p>
+        <div class="accom-actions"><a href="contact.html?property=Royal%20Livingstone" class="cta">Enquire</a></div>
+      </div>
+    </article>
+
+    <article class="accom-card">
+      <div class="accom-media bg-lazy" data-bg="https://matetsivictoriafalls.com/app/uploads/2020/07/matetsi_suite2-2-1536x1024.jpg"></div>
+      <div class="accom-body">
+        <div class="accom-title">Matetsi River Lodge</div>
+        <div class="accom-meta"><span class="badge">Reserve</span></div>
+        <p class="accom-desc">Exclusive river-front lodge set within a private wildlife reserve.</p>
+        <div class="accom-actions"><a href="contact.html?property=Matetsi%20River%20Lodge" class="cta">Enquire</a></div>
+      </div>
+    </article>
+
+    <article class="accom-card">
+      <div class="accom-media bg-lazy" data-bg="https://cdn.sanity.io/images/s82b6z49/production/0815c3b1914cf6c4ff2ea80a707571fad5e93c0e-1920x1255.webp?auto=format&amp;fit=crop&amp;h=1125&amp;q=82&amp;rect=458%2C0%2C1004%2C1255&amp;w=900"></div>
+      <div class="accom-body">
+        <div class="accom-title">The Elephant Camp</div>
+        <div class="accom-meta"><span class="badge">Safari Camp</span></div>
+        <p class="accom-desc">Intimate tented camp offering curated wildlife experiences.</p>
+        <div class="accom-actions"><a href="contact.html?property=The%20Elephant%20Camp" class="cta">Enquire</a></div>
+      </div>
+    </article>
+
+    <h2 id="budget" style="margin-top:28px;">Budget & Mid-range</h2>
+
+    <!-- Mid / Budget entries -->
+    <article class="accom-card">
+      <div class="accom-media bg-lazy" data-bg="https://cdn.sanity.io/images/s82b6z49/production/8e0139c747c29f13b08f9b3b52a807154468b91a-1197x897.webp?auto=format&amp;fit=crop&amp;h=1375&amp;q=82&amp;rect=240%2C0%2C718%2C897&amp;w=1100"></div>
+      <div class="accom-body">
+        <div class="accom-title">River Lodge / A'Zambezi</div>
+        <div class="accom-meta"><span class="badge">Riverside</span></div>
+        <p class="accom-desc">Comfortable riverside rooms and easy access to water activities.</p>
+        <div class="accom-actions"><a href="contact.html?property=River%20Lodge" class="cta">Enquire</a></div>
+      </div>
+    </article>
+
+    <article class="accom-card">
+      <div class="accom-media bg-lazy" data-bg="https://www.voyagerszambia.com/service_img/1346-elephant-hills-hotel-aerial.jpg"></div>
+      <div class="accom-body">
+        <div class="accom-title">Elephant Hills Hotel</div>
+        <div class="accom-meta"><span class="badge">Resort</span></div>
+        <p class="accom-desc">Hilltop resort with Zambezi views, a golf course, swimming pool and shuttle to town and the Falls.</p>
+        <div class="accom-actions"><a href="contact.html?property=Elephant%20Hills%20Hotel" class="cta">Enquire</a></div>
+      </div>
+    </article>
+
+    <article class="accom-card">
+      <div class="accom-media bg-lazy" data-bg="https://www.africanreservations.com/sites/default/files/2024-07/ilala_lodge.jpg"></div>
+      <div class="accom-body">
+        <div class="accom-title">Ilala Lodge</div>
+        <div class="accom-meta"><span class="badge">Town Centre</span></div>
+        <p class="accom-desc">Comfortable rooms close to the falls with a popular on-site restaurant.</p>
+        <div class="accom-actions"><a href="contact.html?property=Ilala%20Lodge" class="cta">Enquire</a></div>
+      </div>
+    </article>
+
+    <article class="accom-card">
+      <div class="accom-media bg-lazy" data-bg="https://wearevictoriafalls.com/site_content/image-cache/content/images/stay/cresta-sprayview-3.7c8cc95b.jpg"></div>
+      <div class="accom-body">
+        <div class="accom-title">Cresta Sprayview</div>
+        <div class="accom-meta"><span class="badge">Reliable</span></div>
+        <p class="accom-desc">Trusted mid-range hotel with practical amenities and good service.</p>
+        <div class="accom-actions"><a href="contact.html?property=Cresta%20Sprayview" class="cta">Enquire</a></div>
+      </div>
+    </article>
+
+    <article class="accom-card">
+      <div class="accom-media bg-lazy" data-bg="https://www.wildlifeworldwide.com/images/banners/africa_zimbabwe_victoria_falls_bayete_guest_lodge_banner-narrow.jpg"></div>
+      <div class="accom-body">
+        <div class="accom-title">Bayete Guest Lodge</div>
+        <div class="accom-meta"><span class="badge">Guesthouse</span></div>
+        <p class="accom-desc">Friendly guesthouse offering clean rooms and local hospitality.</p>
+        <div class="accom-actions"><a href="contact.html?property=Bayete%20Guest%20Lodge" class="cta">Enquire</a></div>
+      </div>
+    </article>
+
+    <article class="accom-card">
+      <div class="accom-media bg-lazy" data-bg="https://wetu.com/imageHandler/c1000x562/194740/pioneers_01_high.jpg"></div>
+      <div class="accom-body">
+        <div class="accom-title">Pioneers Lodge</div>
+        <div class="accom-meta"><span class="badge">Budget</span></div>
+        <p class="accom-desc">Affordable rooms close to town amenities — good value for budget travellers.</p>
+        <div class="accom-actions"><a href="contact.html?property=Pioneers%20Lodge" class="cta">Enquire</a></div>
+      </div>
+    </article>
+
+    <!-- Additional properties added -->
+    <article class="accom-card">
+      <div class="accom-media bg-lazy" data-bg="https://batokaafrica.com/wp-content/uploads/2021/08/zambezi-decksuite-slider-1.jpg"></div>
+      <div class="accom-body">
+        <div class="accom-title">Zambezi Sands Camp</div>
+        <div class="accom-meta"><span class="badge">Luxury Camp</span></div>
+        <p class="accom-desc">High-end tented camp with riverside dining and guided safaris.</p>
+        <div class="accom-actions"><a href="contact.html?property=Zambezi%20Sands%20Camp" class="cta">Enquire</a></div>
+      </div>
+    </article>
+
+    <article class="accom-card">
+      <div class="accom-media bg-lazy" data-bg="https://www.vicfalls.co.za/assets/gallery/river-club/river-club-pool-view.JPG"></div>
+      <div class="accom-body">
+        <div class="accom-title">The River Club</div>
+        <div class="accom-meta"><span class="badge">Boutique</span></div>
+        <p class="accom-desc">A boutique property with contemporary suites and exclusive river access.</p>
+        <div class="accom-actions"><a href="contact.html?property=The%20River%20Club" class="cta">Enquire</a></div>
+      </div>
+    </article>
+
+    <article class="accom-card">
+      <div class="accom-media bg-lazy" data-bg="https://www.visitvictoriafalls.org/wp-content/uploads/2024/10/Victoria-falls-backpackers-Zimbabwe.jpg"></div>
+      <div class="accom-body">
+        <div class="accom-title">Zambezi Backpackers</div>
+        <div class="accom-meta"><span class="badge">Backpackers</span></div>
+        <p class="accom-desc">Friendly budget accommodation popular with solo travellers and groups.</p>
+        <div class="accom-actions"><a href="contact.html?property=Zambezi%20Backpackers" class="cta">Enquire</a></div>
+      </div>
+    </article>
+
+    <article class="accom-card">
+      <div class="accom-media bg-lazy" data-bg="https://a0.muscache.com/im/pictures/miso/Hosting-1424606206785563895/original/acb1227e-fe7b-4d52-8c12-66f233d1a272.jpeg?im_w=720"></div>
+      <div class="accom-body">
+        <div class="accom-title">Lavender Guest House</div>
+        <div class="accom-meta"><span class="badge">Guesthouse</span></div>
+        <p class="accom-desc">Comfortable private rooms with a relaxed garden setting and breakfast included.</p>
+        <div class="accom-actions"><a href="contact.html?property=Lavender%20Guest%20House" class="cta">Enquire</a></div>
+      </div>
+    </article>
+
+    <article class="accom-card">
+      <div class="accom-media bg-lazy" data-bg="https://www.africanreservations.com/sites/default/files/2023-07/victoria_falls_campsite_0.jpg"></div>
+      <div class="accom-body">
+        <div class="accom-title">Riverside Campsite</div>
+        <div class="accom-meta"><span class="badge">Camping</span></div>
+        <p class="accom-desc">Basic riverside campsites with communal facilities for adventurous travellers.</p>
+        <div class="accom-actions"><a href="contact.html?property=Riverside%20Campsite" class="cta">Enquire</a></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+<footer>
+  <div class="wrap footer-inner">
+    <span>KONDOHWE TRAVEL AGENT · VICTORIA FALLS</span>
+    <span>ZIMBABWE · ZAMBIA · BOTSWANA</span>
+  </div>
+</footer>
+
+<dialog class="property-dialog" id="property-dialog" aria-labelledby="gallery-title">
+  <div class="property-dialog-inner">
+    <button class="gallery-close" type="button" aria-label="Close gallery">×</button>
+    <div class="gallery-view">
+      <img id="gallery-image" alt="">
+      <button class="gallery-arrow gallery-prev" type="button" aria-label="Previous photo">‹</button>
+      <button class="gallery-arrow gallery-next" type="button" aria-label="Next photo">›</button>
+      <span class="gallery-count" id="gallery-count"></span>
+    </div>
+    <div class="property-info">
+      <p class="eyebrow">Property enquiry</p>
+      <h2 id="gallery-title"></h2>
+      <p id="gallery-location" class="gallery-location"></p>
+      <ul id="gallery-facts"></ul>
+      <div class="agent-contacts"><strong>Kondohwe Travel Agent</strong><a href="tel:+263776840785">Kari · +263 776 840 785</a><a href="tel:+263771469149">Alice · +263 771 469 149</a></div>
+      <a class="cta gallery-enquire" id="gallery-enquire" href="contact.html">Continue to inquiry</a>
+    </div>
+    <div class="gallery-thumbs" id="gallery-thumbs" aria-label="Photo thumbnails"></div>
+  </div>
+</dialog>
+
+<style>
+.property-dialog{position:fixed;inset:0;margin:auto;width:min(1060px,calc(100% - 28px));max-width:none;max-height:92vh;overflow-y:auto;padding:0;border:1px solid rgba(255,255,255,.24);border-radius:24px;background:rgba(23,34,27,.92);color:#FBF8F2;box-shadow:0 28px 100px rgba(0,0,0,.5);backdrop-filter:blur(24px)}
+.property-dialog::backdrop{background:rgba(8,14,10,.72);backdrop-filter:blur(5px)}
+.property-dialog-inner{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);position:relative;min-height:590px}
+.gallery-view{position:relative;min-height:500px;background:#101814;overflow:hidden;border-radius:24px 0 0 0}
+.gallery-view img{width:100%;height:100%;min-height:500px;object-fit:cover;display:block}
+.gallery-close{position:absolute;right:16px;top:12px;z-index:3;border:1px solid #ffffff55;border-radius:50%;width:42px;height:42px;background:#101814bb;color:white;font-size:28px;cursor:pointer}
+.gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);border:1px solid #ffffff66;border-radius:50%;width:44px;height:44px;background:#101814aa;color:white;font-size:30px;line-height:1;cursor:pointer}
+.gallery-prev{left:16px}.gallery-next{right:16px}.gallery-count{position:absolute;bottom:14px;right:16px;padding:7px 11px;border-radius:20px;background:#101814bb;font-size:12px}
+.property-info{padding:38px 34px 28px;overflow:auto}.property-info .eyebrow{color:var(--bronze-light)}.property-info h2{font-size:clamp(27px,3vw,38px);margin:10px 0;color:var(--ivory)}.gallery-location{color:#d3d9d0;margin-bottom:20px;font-size:14px}.property-info ul{padding-left:19px;display:grid;gap:10px;line-height:1.5;font-size:14px}.property-info li::marker{color:var(--bronze-light)}
+.agent-contacts{display:grid;gap:7px;padding:14px 0 18px;border-top:1px solid #ffffff30;font-size:13px}.agent-contacts a{color:var(--ivory);text-decoration:none}.agent-contacts strong{color:#d3d9d0;font-size:11px;text-transform:uppercase;letter-spacing:.1em}.gallery-enquire{display:inline-flex;justify-content:center;align-items:center;text-decoration:none;background:linear-gradient(180deg,var(--bronze),var(--bronze-light));color:var(--forest-2);padding:10px 16px;border:1px solid rgba(255,255,255,.24);border-radius:999px;box-shadow:0 8px 22px rgba(16,24,20,.12),inset 0 1px 0 rgba(255,255,255,.2);transition:transform .2s ease,box-shadow .2s ease,background .2s ease}.gallery-enquire:hover{color:var(--forest-2);transform:translateY(-2px);box-shadow:0 12px 28px rgba(16,24,20,.16),inset 0 1px 0 rgba(255,255,255,.24)}
+.gallery-thumbs{grid-column:1/-1;display:flex;gap:10px;padding:12px 16px 16px;overflow:auto}.gallery-thumb{width:96px;height:64px;flex:0 0 auto;object-fit:cover;border-radius:10px;opacity:.65;border:2px solid transparent;cursor:pointer}.gallery-thumb.active{opacity:1;border-color:var(--bronze-light)}
+@media(max-width:720px){.property-dialog-inner{display:block;min-height:0}.gallery-view,.gallery-view img{min-height:260px;height:36vh;border-radius:24px 24px 0 0}.property-info{padding:24px}.gallery-thumbs{padding-bottom:14px}.gallery-close{top:10px;right:10px}}
+</style>
+
+<script>
+// Property-specific gallery and researched, source-linked inquiry details.
+(function(){
+  var commonView='https://www.zambiatourism.com/listing/tongabezi-lodge/';
+  var region='Victoria Falls / Livingstone';
+  var data={
+    'Victoria Falls Hotel':{loc:'Victoria Falls, Zimbabwe',facts:['Opened in 1904 and known for its Edwardian design.','Set close to the Victoria Falls rainforest and historic bridge, with views toward the gorge.','The hotel offers restaurants, gardens, lounges and a range of rooms and suites.'],src:[['Official hotel','https://www.victoriafallshotel.com/']],imgs:[['https://www.africanreservations.com/sites/default/files/2024-07/the_victoria_falls_hotel_exterior.jpg','Hotel exterior'],['https://www.luxurylink.com/images/sho_5942cfcd/2579042_555-1280/image-2579042_555.jpg?filtered=1','Historic entrance']]},
+    'Tongabezi Lodge':{loc:'Zambezi River, Livingstone, Zambia',facts:['Riverside lodge upstream of Victoria Falls with individually styled houses and cottages.','Experiences include river cruises, canoeing, guided Falls visits and community visits.','Sindabezi Island is a separate island camp associated with the lodge.'],src:[['Zambia Tourism','https://www.zambiatourism.com/listing/tongabezi-lodge/'],['Green Safaris photo gallery','https://greensafaris.com/galleries/tongabezi-lodge/lookout-tongabezi']],imgs:[['https://cdn.mahlatini.com/destinations/zambia/livingstone-and-victoria-falls/tongabezi-lodge/_1280x900_crop_center-center_none/tongabezi-lodge-the-bird-house-pool-and-deck-1280.jpg','Bird House deck and plunge pool'],['https://cdn.mahlatini.com/destinations/zambia/livingstone-and-victoria-falls/tongabezi-lodge/_2400x1350_crop_center-center_none/tongabezi-lodge-lodge-exterior-and-setting-2400.jpg','Riverside lodge setting'],['https://greensafaris.com/img/cms/galleries/photos/6oPjjq3A_max1500x1000.jpg','The Lookout riverside deck']]},
+    'Royal Livingstone (Zambia)':{loc:'Livingstone, Zambia',facts:['Located on the Zambezi within Mosi-oa-Tunya National Park.','Guests have direct access on foot to the Victoria Falls entrance area.','Rooms have private verandahs; wildlife may be seen around the hotel grounds.'],src:[['Anantara official hotel page','https://www.anantara.com/en/royal-livingstone']],imgs:[['https://cdn2.rhinoafrica.com/thumbnails/objects/service-providers/royal-livingstone/_img/38314/image-thumb__38314__background-cover/royal-livingstone-exteriors-entrance-01.6fdfbf59.jpg','Hotel entrance'],['https://cdn2.rhinoafrica.com/thumbnails/objects/service-providers/royal-livingstone/_img/29132/image-thumb__29132__background-cover/royal-livingstone-room-deluxe-room-interior-01.f1afe0a6.jpg','Deluxe room and veranda'],['https://assets.anantara.com/image/upload/q_auto%2Cf_auto/media/minor/anantara/images/blog/2021-blog-content/202103---victoria-falls/victoria-falls-to-do-1.jpg?w=100%25','Wildlife around the hotel']]},
+    'Matetsi River Lodge':{loc:'Zambezi River, Matetsi Private Game Reserve, Zimbabwe',facts:['River-facing suites in a private game reserve near Victoria Falls.','Suites include private decks and plunge pools; the lodge has a shared lap pool.','Safari activities include game drives, river cruises and guided Falls visits.'],src:[['Matetsi official suites','https://matetsivictoriafalls.com/stay/luxury-suites/']],imgs:[['https://matetsivictoriafalls.com/app/uploads/2020/07/matetsi_suite2-2-1536x1024.jpg','River suite'],['https://www.jacadatravel.com/_next/image/?q=100&url=https%3A%2F%2Fcdn.jacadatravel.com%2Fwp-content%2Fuploads%2Fbis-images%2F151380%2Fmatetsi-river-lodge-pool-1-1200-1050x520-f50_50.jpg&w=1600','Lodge pool'],['https://matetsivictoriafalls.com/app/uploads/2021/09/Elephants-March-2019-2-1-1024x683.png','Elephants at a waterhole']]},
+    'The Elephant Camp':{loc:'Victoria Falls, Zimbabwe',facts:['Tented suites in a private concession near Victoria Falls.','Suites have private decks and plunge pools with views toward the Batoka Gorge area.','The camp offers wildlife activities and guided visits to Victoria Falls.'],src:[['andBeyond official property page','https://www.andbeyond.com/places-to-stay/africa/zimbabwe/victoria-falls/the-elephant-camp/']],imgs:[['https://cdn.sanity.io/images/s82b6z49/production/0815c3b1914cf6c4ff2ea80a707571fad5e93c0e-1920x1255.webp?auto=format&fit=crop&h=1125&q=82&rect=458%2C0%2C1004%2C1255&w=900','Elephant Camp suite'],['https://d19lgisewk9l6l.cloudfront.net/assetbank/The_Elephant_Camp_The_Victoria_Falls_Zimbabwe_77501.jpg','Camp view'],['https://www.chaloafrica.com/wp-content/uploads/2018/06/The-Elephant-Camp-View.jpeg','View from camp']]},
+    "River Lodge / A'Zambezi":{loc:'Zambezi River, Victoria Falls, Zimbabwe',facts:['The listing appears to refer to A’Zambezi River Lodge on the riverbank.','The hotel describes thatched rooms and suites with air conditioning and en-suite facilities.','Ask the agent to confirm the exact room type and availability for your dates.'],src:[['A’Zambezi official site','https://www.azambezi-hotel.com/']],imgs:[['https://cdn.sanity.io/images/s82b6z49/production/8e0139c747c29f13b08f9b3b52a807154468b91a-1197x897.webp?auto=format&fit=crop&h=1375&q=82&rect=240%2C0%2C718%2C897&w=1100','A’Zambezi River Lodge'],['https://www.fambayi.com/assets/Uploads/multimedia/a-zambezi-river-lodge/48374774_2155252084728392_9008070961303388160_n__FillWzgwMCw1MzNd.jpg','Lodge grounds'],['https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/52/f3/73/close-to-the-river.jpg?h=-1&s=1&w=1000','River setting']]},
+    'Elephant Hills Hotel':{loc:'Victoria Falls, Zimbabwe',facts:['Hilltop resort outside Victoria Falls town with many rooms overlooking the Zambezi River and Zambia.','The hotel lists an 18-hole golf course, swimming pool, restaurants, bars, tennis and squash courts.','A complimentary shuttle runs hourly from 9am to 5pm between the hotel, town and Falls entrance.'],src:[['Elephant Hills Hotel official site','https://www.elephanthillshotel.com/'],['Facilities and shuttle details','https://www.elephanthillshotel.com/facilities/'],['Room information','https://www.elephanthillshotel.com/rooms/'],['Golf course photo source','https://www.cz-milka.net/digifotogalerie/2016-10-07-jizni-afrika-zimbabwe-zambia-elephant-hills-golf-course-victoria-falls-zambezi/']],imgs:[['https://www.voyagerszambia.com/service_img/1346-elephant-hills-hotel-aerial.jpg','Elephant Hills Hotel aerial view'],['https://www.cz-milka.net/digifotogalerie/20161007-jizni-afrika-zimbabwe-zambia-elephant-hills-golf-course-victoria-falls-zambezi/12.jpg','Elephant Hills golf course fairway'],['https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/c5/63/4d/caption.jpg?h=-1&s=1&w=1100','Pool and golf course']]},
+    'Ilala Lodge':{loc:'Victoria Falls town, Zimbabwe',facts:['Within walking distance of the Victoria Falls rainforest entrance.','The property has 73 rooms and on-site dining at Cassia Restaurant.','Facilities include swimming pools and a tour desk for arranging activities.'],src:[['Ilala Lodge official site','https://www.ilalalodge.com/'],['Facilities','https://www.ilalalodge.com/facilities']],imgs:[['https://www.africanreservations.com/sites/default/files/2024-07/ilala_lodge.jpg','Ilala Lodge'],['https://www.discoverafrica.com/wp-content/uploads/2021/12/aerial_view_ilala_lodge_hotel-992x661.jpeg','Aerial view'],['https://www.adventure-life.com/africa/victoria-falls/hotels/ilala-lodge-hotel','Ilala Lodge information']]},
+    'Cresta Sprayview':{loc:'Victoria Falls town, Zimbabwe',facts:['Set on landscaped grounds about 1.4 km from the rainforest entrance.','The hotel has a swimming pool, restaurant and rooms with hotel amenities.','A convenient base for town and Falls excursions; confirm transfers for your dates.'],src:[['Cresta Hotels official page','https://www.crestahotels.com/hotels/zimbabwe/cresta-sprayview']],imgs:[['https://wearevictoriafalls.com/site_content/image-cache/content/images/stay/cresta-sprayview-3.7c8cc95b.jpg','Hotel grounds'],['https://www.rhinoafrica.com/en/accommodation/cresta-sprayview-hotel/','Cresta Sprayview'],['https://www.designtraveller.co.za/cresta-sprayview-victoria-falls/','Hotel setting']]},
+    'Bayete Guest Lodge':{loc:'Victoria Falls town, Zimbabwe',facts:['Guest lodge with 30 rooms set in landscaped gardens.','Facilities described by the property include a pool, restaurant, bar and breakfast.','Suitable for a town-based stay; ask the agent about room categories and transfers.'],src:[['The Bayete Collection','https://www.thebayetecollection.com/bayete-guest-lodge/']],imgs:[['https://www.wildlifeworldwide.com/images/banners/africa_zimbabwe_victoria_falls_bayete_guest_lodge_banner-narrow.jpg','Bayete Guest Lodge'],['https://media.jambo.nl/original/galerij/Zimbabwe-Victoria-Falls-Bayete-Guest-Lodge-pool-WS.jpeg','Guest lodge pool'],['https://www.thebayetecollection.com/bayete-guest-lodge/','Property details']]},
+    'Pioneers Lodge':{loc:'Victoria Falls town, Zimbabwe',facts:['Quiet residential setting around 2.5 km from Victoria Falls.','The lodge lists 50 rooms, a garden, swimming pools and spa facilities.','Rooms include air conditioning, ceiling fans and tea/coffee facilities.'],src:[['Pioneers Lodge official page','https://www.pioneersvicfalls.com/about-pioneers/']],imgs:[['https://wetu.com/imageHandler/c1000x562/194740/pioneers_01_high.jpg','Pioneers Lodge'],['https://dynamic-media-cdn.tripadvisor.com/media/photo-o/23/c4/99/8b/pioneers-lodge.jpg?h=-1&s=1&w=1200','Lodge exterior'],['https://www.pioneersvicfalls.com/about-pioneers/','Pioneers Lodge information']]},
+    'Zambezi Sands Camp':{loc:'Zambezi National Park, Zimbabwe',facts:['Riverfront tented camp within Zambezi National Park.','The property lists 10 tented suites, each with a private deck.','Safari activities include game drives, walking safaris and river experiences.'],src:[['Batoka Africa official property page','https://batokaafrica.com/properties/zambezi-sands/']],imgs:[['https://batokaafrica.com/wp-content/uploads/2021/08/zambezi-decksuite-slider-1.jpg','Riverside deck suite'],['https://batokaafrica.com/wp-content/uploads/2021/08/zambezi-sands-tent.jpg','Tented suite'],['https://batokaafrica.com/properties/zambezi-sands/','Camp gallery and details']]},
+    'The River Club':{loc:'Upper Zambezi, Livingstone, Zambia',facts:['Riverside property upstream from Livingstone with suites overlooking the Zambezi.','The lodge describes a small collection of suites and family options.','Ask about transfers and which Falls-side activities are included in your itinerary.'],src:[['Zambia Tourism listing','https://www.zambiatourism.com/listing/the-river-club-zambia/'],['The River Club','https://www.vicfalls.co.za/river-club.html']],imgs:[['https://www.vicfalls.co.za/assets/gallery/river-club/river-club-pool-view.JPG','River Club pool and river view'],['https://www.wexas.com/accommodation-offers/the-river-club-116238','River Club suites'],['https://www.zambiatourism.com/listing/the-river-club-zambia/','Property information']]},
+    'Zambezi Backpackers':{loc:'Victoria Falls town, Zimbabwe',facts:['Offers dormitory, private and family room options, as well as camping.','Shared facilities include a swimming pool and self-catering kitchen.','A budget-friendly base for arranging local activities and transport.'],src:[['Victoria Falls Backpackers official rooms page','https://www.victoriafallsbackpackers.com/affordable-rooms-victoria-falls/']],imgs:[['https://www.visitvictoriafalls.org/wp-content/uploads/2024/10/Victoria-falls-backpackers-Zimbabwe.jpg','Backpackers accommodation'],['https://www.victoriafallsbackpackers.com/affordable-rooms-victoria-falls/','Room options'],['https://www.victoriafallsbackpackers.com/','Victoria Falls Backpackers']]},
+    'Lavender Guest House':{loc:'Victoria Falls town, Zimbabwe',facts:['The linked listing is a whole-home stay in Victoria Falls with six bedrooms and five bathrooms.','The host listing says it sleeps up to 12 guests and has a private pool.','The listing indicates the Falls park entrance is about a 10-minute drive away; confirm current transport arrangements.'],src:[['Host listing on Airbnb','https://www.airbnb.com/rooms/1424606206785563895']],imgs:[['https://a0.muscache.com/im/pictures/miso/Hosting-1424606206785563895/original/acb1227e-fe7b-4d52-8c12-66f233d1a272.jpeg?im_w=720','Lavender Guest House'],['https://a0.muscache.com/im/pictures/miso/Hosting-1424606206785563895/original/acb1227e-fe7b-4d52-8c12-66f233d1a272.jpeg?im_w=720','Private home listing image']]},
+    'Riverside Campsite':{loc:'Victoria Falls area, Zimbabwe',facts:['The current listing points to a Victoria Falls area campsite listing.','Camping facilities and exact location need to be confirmed with the agent before booking.','Share your dates, party size and whether you need a tent or bring your own equipment.'],src:[['African Reservations listing','https://www.africanreservations.com/Victoria-Falls-Campsite']],imgs:[['https://www.africanreservations.com/sites/default/files/2023-07/victoria_falls_campsite_0.jpg','Victoria Falls campsite listing'],['pictures/VIC FALLS.avif','Victoria Falls area setting']]}
+  };
+  var dlg=document.getElementById('property-dialog'), current=[], idx=0, activeName='';
+  var img=document.getElementById('gallery-image'), thumbs=document.getElementById('gallery-thumbs');
+  function showPhoto(n){idx=(n+current.length)%current.length;var p=current[idx];img.fetchPriority='high';img.decoding='async';img.src=p[0];img.alt=p[1];document.getElementById('gallery-count').textContent=(idx+1)+' / '+current.length;thumbs.querySelectorAll('button').forEach(function(b,i){b.classList.toggle('active',i===idx);});}
+  function open(card){activeName=card.querySelector('.accom-title').textContent.trim();var d=data[activeName]||{};current=d.imgs||[];if(!current.length){var media=card.querySelector('.accom-media');current=[[media.getAttribute('data-bg')||'',activeName]];}document.getElementById('gallery-title').textContent=activeName;document.getElementById('gallery-location').textContent=d.loc||region;
+    var ul=document.getElementById('gallery-facts');ul.replaceChildren();(d.facts||['Contact the agent to confirm property details and availability.']).forEach(function(t){var li=document.createElement('li');li.textContent=t;ul.appendChild(li);});thumbs.replaceChildren();current.forEach(function(p,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Show photo '+(i+1)+': '+p[1]);var t=document.createElement('img');t.loading='lazy';t.decoding='async';t.src=p[0];t.alt='';t.className='gallery-thumb';b.appendChild(t);b.addEventListener('click',function(){showPhoto(i);});thumbs.appendChild(b);});showPhoto(0);var params=new URLSearchParams();params.set('property',activeName);params.set('details',(d.facts||[]).join('\n'));params.set('sources',(d.src||[]).map(function(s){return s[0]+': '+s[1];}).join('\n'));document.getElementById('gallery-enquire').href='contact.html?'+params.toString();dlg.showModal();}
+  document.querySelectorAll('.accom-card .accom-actions .cta').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();open(a.closest('.accom-card'));});});
+  dlg.querySelector('.gallery-close').addEventListener('click',function(){dlg.close();});dlg.querySelector('.gallery-prev').addEventListener('click',function(){showPhoto(idx-1);});dlg.querySelector('.gallery-next').addEventListener('click',function(){showPhoto(idx+1);});dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
+})();
+</script>
+<script>
+(function(){
+  var btn = document.getElementById('hamburger-btn');
+  var menu = document.getElementById('nav-links');
+  if(btn && menu){
+    btn.addEventListener('click', function(){ btn.classList.toggle('open'); menu.classList.toggle('open'); });
+    menu.querySelectorAll('a').forEach(function(link){ link.addEventListener('click', function(){ btn.classList.remove('open'); menu.classList.remove('open'); }); });
+  }
+})();
+</script>
+<script>
+// Lazy-load background images on elements with .bg-lazy (data-bg)
+(function(){
+  var lazyBg = function(el){
+    var src = el.getAttribute('data-bg');
+    if(!src) return;
+    el.style.backgroundImage = 'url("'+src+'")';
+    el.classList.remove('bg-lazy');
+  };
+
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ lazyBg(entry.target); io.unobserve(entry.target); }
+      });
+    }, {rootMargin: '400px 0px'});
+    document.querySelectorAll('.bg-lazy').forEach(function(el){ io.observe(el); });
+  } else {
+    // Fallback: load all
+    document.querySelectorAll('.bg-lazy').forEach(lazyBg);
+  }
+})();
+</script>
+<a href="https://wa.me/263776840785?text=Hello%20Victoria%20Falls%20team%2C%20I%20would%20like%20to%20ask%20about%20activity%20bookings%20and%20accommodation%20options." class="btn-whatsapp whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contact on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.272-.1-.47-.149-.67.149s-.767.967-.94 1.166c-.173.199-.347.223-.644.075-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.173.198-.298.298-.497.099-.199.05-.373-.025-.522-.075-.149-.67-1.612-.92-2.207-.242-.579-.487-.5-.67-.51l-.571-.01c-.199 0-.522.075-.796.373s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.075-.124-.272-.199-.57-.348z" fill="currentColor"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.004 2.003C6.478 2.003 2.004 6.478 2.004 12c0 2.115.69 4.105 1.876 5.727L2 22l4.47-1.169A9.937 9.937 0 0 0 12.004 22c5.526 0 10.001-4.475 10.001-10S17.53 2.003 12.004 2.003zm0 18.03c-1.54 0-3.03-.403-4.312-1.165l-.308-.184-2.643.693.706-2.576-.2-.33A7.971 7.971 0 0 1 4.004 12c0-4.418 3.586-8.002 8-8.002 4.417 0 8.001 3.585 8.001 8.002 0 4.418-3.584 8.001-8.001 8.001z" fill="currentColor"/>
+  </svg>
+</a>
+</body>
+</html>

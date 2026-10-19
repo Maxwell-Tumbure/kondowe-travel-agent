@@ -1,0 +1,333 @@
+/* Shared site styles - centralized
+   Contains premium button styles, WhatsApp floating button, and CTA nav styles.
+*/
+:root{
+  --ivory:#FBF8F2; --sand:#EFE6D4; --forest:#233826; --forest-2:#101814;
+  --bronze:#A66F30; --bronze-light:#D9A462; --ink:#1b2119;
+}
+.site-page{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+.site-page footer{
+  width:100%;
+  margin-top:auto;
+  padding:28px 0;
+}
+.site-page .footer-inner{
+  color:rgba(251,248,241,0.72);
+  line-height:1.5;
+}
+
+/* Buttons */
+.btn{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
+  padding:12px 24px; cursor:pointer; text-decoration:none;
+  display:inline-flex; align-items:center; gap:10px; border-radius:10px;
+  transition:transform .15s ease, background .25s ease, box-shadow .2s ease; border:1px solid transparent;
+}
+.btn:hover{ transform:translateY(-3px); box-shadow:0 18px 40px rgba(16,18,14,0.12); }
+.btn-primary{ background: linear-gradient(180deg, var(--bronze) 0%, var(--bronze-light) 100%); color:var(--forest-2); font-weight:600; letter-spacing:0.12em; box-shadow:0 12px 36px rgba(166,111,48,0.14); }
+.btn-primary:hover{ transform:translateY(-4px); box-shadow:0 18px 50px rgba(16,18,14,0.18); }
+.btn-book{ background:transparent; border:1px solid rgba(27,33,25,0.08); color:var(--forest); padding:12px 22px; border-radius:10px; }
+.btn-ghost{ border:1px solid rgba(27,33,25,0.06); color:var(--forest); background:transparent; }
+button.btn-submit{ all:unset; display:inline-flex; align-items:center; justify-content:center; padding:12px 22px; border-radius:10px; background:linear-gradient(180deg,var(--bronze),var(--bronze-light)); color:var(--forest-2); font-weight:600; cursor:pointer; box-shadow:0 12px 36px rgba(166,111,48,0.14); }
+
+/* Nav CTA */
+nav.links a.cta{ opacity:1; background: linear-gradient(180deg,var(--bronze),var(--bronze-light)); color:var(--forest-2); padding:10px 18px; border-radius:8px; font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; font-weight:500; border-bottom:none; }
+nav.links a.cta:hover{ background:var(--bronze-light); }
+
+/* Hero context: ensure buttons are visible on dark hero overlays */
+.hero .btn{ padding:16px 30px; border-radius:8px; }
+.hero .btn-book{ background:transparent; border:1px solid rgba(255,255,255,0.12); color:var(--ivory); }
+.hero .btn-ghost{ border-color:rgba(255,255,255,0.12); color:var(--ivory); background:transparent; }
+
+/* WhatsApp floating button */
+.btn-whatsapp{ display:inline-flex; align-items:center; justify-content:center; width:72px; height:72px; border-radius:50%; border:none; cursor:pointer; background:#25D366; color:#fff; font-family:'IBM Plex Mono', monospace; font-size:14px; text-transform:none; text-decoration:none; padding:0; box-shadow:0 30px 60px rgba(0,0,0,0.20); animation:whatsapp-bounce 2.5s ease-in-out infinite; }
+.btn-whatsapp svg{ width:32px; height:32px; }
+.btn-whatsapp:hover{ background:#1ebe5d; }
+.whatsapp-float{ position:fixed; right:24px; bottom:24px; z-index:120; }
+@keyframes whatsapp-bounce{ 0%,100%{ transform:translateY(0); } 15%{ transform:translateY(-6px); } 40%{ transform:translateY(0); } 65%{ transform:translateY(-3px); } 85%{ transform:translateY(0); } }
+
+/* Card polish — make square corners look premium across site */
+.season-card,
+.plan-item,
+.accom-card,
+.exp-card,
+.faq-card,
+.custom-qa-card,
+.accom-card,
+.exp-card .exp-body,
+.accom-card .accom-body{
+  border-radius:16px;
+  box-shadow:0 20px 40px rgba(16,18,14,0.06);
+  border:1px solid rgba(16,18,14,0.06);
+  overflow:hidden;
+  background-clip: padding-box;
+}
+
+/* Accommodations page specific styles */
+.accom-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:28px; padding:48px 0; }
+.accom-grid h2{ grid-column:1/-1; text-align:center; margin:0 0 18px; font-size:clamp(20px,2vw,24px); color:var(--forest); }
+.accom-card{ display:flex; flex-direction:column; background:linear-gradient(180deg,var(--ivory),#fff); border-radius:14px; overflow:hidden; transition:transform .28s ease, box-shadow .28s ease; }
+.accom-card:hover{ transform:translateY(-8px); box-shadow:0 30px 70px rgba(16,18,14,0.08); }
+.accom-media{ height:200px; background-size:cover; background-position:center; position:relative; }
+.accom-media::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.08) 100%); }
+.accom-body{ padding:20px 22px 24px; display:flex; flex-direction:column; gap:10px; }
+.accom-title{ font-family:'Fraunces', serif; font-size:20px; color:var(--forest); margin-bottom:6px; }
+.accom-desc{ color:rgba(27,33,25,0.8); line-height:1.6; font-size:14px; }
+.accom-meta{ display:flex; gap:8px; align-items:center; }
+.accom-meta .badge{ padding:6px 10px; border-radius:999px; background:linear-gradient(180deg,var(--sand),var(--sand-2)); color:var(--forest); font-family:'IBM Plex Mono', monospace; font-size:11px; }
+.accom-actions{ margin-top:12px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.accom-actions .cta{ background: linear-gradient(180deg,var(--bronze),var(--bronze-light)); color:var(--forest-2); padding:10px 16px; border-radius:8px; text-decoration:none; box-shadow:0 10px 30px rgba(166,111,48,0.08); }
+.accom-actions .small{ color:rgba(27,33,25,0.6); font-size:13px; }
+
+@media (max-width:760px){
+  .accom-grid{ grid-template-columns:1fr; padding:28px 0; }
+  .accom-media{ height:160px; }
+}
+
+/* Slightly lift title and add comfortable inner spacing */
+.season-card h3,
+.plan-item h3,
+.accom-title,
+.faq-card h3{
+  margin-top:6px;
+}
+
+/* Make badge area subtle and premium */
+.season-card .months,
+.accom-meta .badge{
+  background:transparent;
+  color:var(--bronze);
+  letter-spacing:0.12em;
+}
+.logo{
+  display:flex;
+  flex-direction:column;
+  line-height:1;
+  text-decoration:none;
+}
+.logo .name{
+  font-family:'Fraunces',serif;
+  font-size:20px;
+  letter-spacing:.01em;
+  color:var(--ivory);
+}
+.logo .tag{
+  margin-top:5px;
+  color:var(--bronze-light);
+  font:500 9px/1 'IBM Plex Mono',monospace;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+/* Sitewide liquid glass navigation and pill controls */
+header.nav{
+  background:rgba(26,36,28,0.68);
+  -webkit-backdrop-filter:blur(18px) saturate(145%);
+  backdrop-filter:blur(18px) saturate(145%);
+  border-bottom:1px solid rgba(255,255,255,0.16);
+  box-shadow:0 10px 34px rgba(16,24,20,0.12);
+}
+nav.links{
+  gap:6px;
+  padding:7px;
+  border:1px solid rgba(255,255,255,0.22);
+  border-radius:999px;
+  background:rgba(255,255,255,0.09);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.14), 0 8px 24px rgba(16,24,20,0.08);
+  -webkit-backdrop-filter:blur(18px) saturate(145%);
+  backdrop-filter:blur(18px) saturate(145%);
+}
+nav.links a,
+nav.links a:hover,
+nav.links a.active{
+  border:1px solid transparent;
+  border-radius:999px;
+  padding:10px 18px;
+  transition:background .22s ease, color .22s ease, transform .22s ease, box-shadow .22s ease;
+}
+nav.links a:hover{ background:rgba(255,255,255,0.12); }
+nav.links a.active:not(.cta){
+  background:var(--bronze-light);
+  color:var(--forest-2);
+  box-shadow:0 3px 12px rgba(16,24,20,0.14), inset 0 1px 0 rgba(255,255,255,0.32);
+}
+nav.links a.cta,
+nav.links a.cta:hover,
+nav.links a.cta.active{
+  border:1px solid rgba(255,255,255,0.24);
+  border-radius:999px;
+  padding:10px 20px;
+  background:linear-gradient(180deg,var(--bronze),var(--bronze-light));
+  color:var(--forest-2);
+  box-shadow:0 5px 16px rgba(16,24,20,0.14), inset 0 1px 0 rgba(255,255,255,0.24);
+}
+.btn,
+button.btn-submit,
+.accom-actions .cta,
+button:not(.hamburger):not(.activity-modal-close){
+  border-radius:999px;
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.btn,
+button.btn-submit,
+.accom-actions .cta{
+  border:1px solid rgba(255,255,255,0.24);
+  box-shadow:0 8px 22px rgba(16,24,20,0.12), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.btn:hover,
+button.btn-submit:hover,
+.accom-actions .cta:hover,
+button:not(.hamburger):not(.activity-modal-close):hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(16,24,20,0.16), inset 0 1px 0 rgba(255,255,255,0.24);
+}
+.btn-ghost,
+.btn-book{
+  background:rgba(255,255,255,0.12);
+  -webkit-backdrop-filter:blur(12px) saturate(135%);
+  backdrop-filter:blur(12px) saturate(135%);
+}
+.btn-whatsapp,
+.hamburger,
+button.activity-modal-close{ border-radius:50%; }
+
+@media (max-width:860px){
+  nav.links{
+    gap:18px;
+    padding:40px;
+    border-radius:24px 0 0 24px;
+    border:1px solid rgba(255,255,255,0.18);
+    background:rgba(16,24,20,0.9);
+  }
+  nav.links a,
+  nav.links a:hover,
+  nav.links a.active{ padding:12px 22px; }
+}
+
+/* Extend the glass finish to the site's content surfaces */
+.season-card,
+.plan-item,
+.accom-card,
+.exp-card,
+.faq-card,
+.custom-qa-card,
+.custom-qa-response,
+.contact-sec,
+.activity-modal-content{
+  background:linear-gradient(145deg,rgba(255,255,255,0.78),rgba(255,255,255,0.54));
+  border:1px solid rgba(255,255,255,0.68);
+  box-shadow:0 18px 46px rgba(16,24,20,0.09), inset 0 1px 0 rgba(255,255,255,0.72);
+  -webkit-backdrop-filter:blur(18px) saturate(135%);
+  backdrop-filter:blur(18px) saturate(135%);
+}
+.season-card,
+.plan-item,
+.faq-card,
+.custom-qa-card,
+.custom-qa-response{
+  border-radius:22px;
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.season-card:hover,
+.plan-item:hover,
+.faq-card:hover,
+.custom-qa-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(255,255,255,0.9);
+  box-shadow:0 24px 54px rgba(16,24,20,0.12), inset 0 1px 0 rgba(255,255,255,0.82);
+}
+.exp-card,
+.accom-card{
+  background:linear-gradient(155deg,rgba(255,255,255,0.86),rgba(255,255,255,0.62));
+  border-color:rgba(255,255,255,0.72);
+  -webkit-backdrop-filter:blur(16px) saturate(135%);
+  backdrop-filter:blur(16px) saturate(135%);
+}
+.exp-body,
+.accom-body{ background:linear-gradient(145deg,rgba(255,255,255,0.52),rgba(255,255,255,0.24)); }
+.contact-sec{
+  border-radius:26px;
+  padding:112px 38px 96px;
+}
+input,
+select,
+textarea,
+.custom-qa-card input,
+.custom-qa-card textarea{
+  border-radius:14px;
+  background:rgba(255,255,255,0.62);
+  border:1px solid rgba(255,255,255,0.82);
+  box-shadow:inset 0 1px 2px rgba(16,24,20,0.04), 0 6px 18px rgba(16,24,20,0.04);
+  -webkit-backdrop-filter:blur(12px) saturate(125%);
+  backdrop-filter:blur(12px) saturate(125%);
+  transition:border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+input:focus,
+select:focus,
+textarea:focus,
+.custom-qa-card input:focus,
+.custom-qa-card textarea:focus{
+  background:rgba(255,255,255,0.82);
+  border-color:var(--bronze-light);
+  box-shadow:0 0 0 4px rgba(217,164,98,0.12), inset 0 1px 2px rgba(16,24,20,0.04);
+}
+.page-head{
+  border-bottom:1px solid rgba(255,255,255,0.18);
+  box-shadow:inset 0 -1px 0 rgba(255,255,255,0.08);
+}
+.activity-modal.open{ background:rgba(16,24,20,0.58); }
+.activity-modal-content{
+  border-radius:28px;
+  background:linear-gradient(145deg,rgba(251,248,242,0.94),rgba(239,230,212,0.86));
+  border-color:rgba(255,255,255,0.72);
+  -webkit-backdrop-filter:blur(24px) saturate(140%);
+  backdrop-filter:blur(24px) saturate(140%);
+}
+.activity-meta span,
+.accom-meta .badge{
+  background:rgba(255,255,255,0.46);
+  border:1px solid rgba(255,255,255,0.7);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.6);
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+}
+nav[aria-label="Accommodations filter"]{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 14px;
+  border:1px solid rgba(255,255,255,0.68);
+  border-radius:999px;
+  background:rgba(255,255,255,0.42);
+  box-shadow:0 8px 24px rgba(16,24,20,0.06), inset 0 1px 0 rgba(255,255,255,0.72);
+  -webkit-backdrop-filter:blur(14px) saturate(130%);
+  backdrop-filter:blur(14px) saturate(130%);
+}
+.page-head .eyebrow,
+.hero .eyebrow{ text-shadow:0 1px 14px rgba(16,24,20,0.24); }
+footer{
+  background:rgba(16,24,20,0.88);
+  color:rgba(251,248,241,0.72);
+  border-top:1px solid rgba(255,255,255,0.18);
+  box-shadow:0 -12px 34px rgba(16,24,20,0.08), inset 0 1px 0 rgba(255,255,255,0.08);
+  -webkit-backdrop-filter:blur(18px) saturate(130%);
+  backdrop-filter:blur(18px) saturate(130%);
+}
+.footer{ color:rgba(251,248,241,0.72); }
+
+@media (max-width:640px){
+  .site-page .footer-inner{ justify-content:center; text-align:center; }
+  .contact-sec{ padding:64px 24px 48px; border-radius:20px; }
+  .form-grid{ grid-template-columns:1fr; gap:20px; }
+  .form-grid .form-group.full-width{ grid-column:auto; }
+  .season-card,
+  .plan-item,
+  .faq-card,
+  .custom-qa-card,
+  .custom-qa-response{ border-radius:18px; }
+}

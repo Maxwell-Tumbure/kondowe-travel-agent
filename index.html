@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kondohwe Travel Agent — Victoria Falls Activities</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="pictures/VIC FALSS  BACKGROUND.avif" fetchpriority="high">
+<style>
+:root{
+  --ivory:#FBF8F2;
+  --sand:#EFE6D4;
+  --sand-2:#E6DCC6;
+  --forest:#233826;
+  --forest-2:#101814;
+  --bronze:#A66F30;
+  --bronze-light:#D9A462;
+  --ink:#1b2119;
+  --line-light: rgba(27,33,25,0.10);
+  --line-dark: rgba(27,33,25,0.12);
+  --glass: rgba(255,255,255,0.06);
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--ivory);
+  color:var(--ink);
+  font-family:'Work Sans', sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important;}
+}
+h1,h2,h3,h4{ font-family:'Fraunces', serif; font-weight:450; line-height:1.05; letter-spacing:-0.01em; }
+.mono{ font-family:'IBM Plex Mono', monospace; }
+a{ color:inherit; }
+.wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+.eyebrow{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:11px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  display:flex; align-items:center; gap:10px;
+  color:var(--bronze-light);
+}
+.eyebrow::before{ content:""; width:20px; height:1px; background:var(--bronze-light); }
+a:focus-visible, button:focus-visible{ outline:3px solid var(--bronze); outline-offset:3px; }
+
+/* ---------- NAVIGATION & HAMBURGER MENU ---------- */
+header.nav{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:rgba(26, 36, 28, 0.85);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line-dark);
+}
+.nav-inner{
+  max-width:1180px; margin:0 auto; padding:18px 32px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.logo{ display:flex; flex-direction:column; line-height:1; text-decoration:none; }
+.logo .name{ font-family:'Fraunces', serif; font-size:20px; letter-spacing:0.01em; color:var(--ivory); }
+.logo .tag{ font-family:'IBM Plex Mono', monospace; font-size:9px; letter-spacing:0.16em; color:var(--bronze-light); margin-top:4px; text-transform:uppercase; }
+
+nav.links{ display:flex; gap:34px; align-items:center; }
+nav.links a{
+  font-size:13px; letter-spacing:0.02em;
+  text-decoration:none; color:var(--ivory); opacity:0.85;
+  padding:6px 0; border-bottom:1px solid transparent;
+  transition:opacity .2s, border-color .2s;
+}
+nav.links a:hover, nav.links a.active{ opacity:1; border-color:var(--bronze-light); }
+nav.links a.cta{
+  opacity:1; background:var(--bronze); color:var(--forest-2);
+  padding:10px 20px; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
+  border-bottom:none; font-weight: 500;
+}
+nav.links a.cta:hover{ background:var(--bronze-light); }
+
+/* Hamburger Icon Toggle */
+.hamburger{
+  display:none; flex-direction:column; justify-content:space-between;
+  width:26px; height:18px; background:none; border:none; cursor:pointer; z-index:110;
+}
+.hamburger span{ width:100%; height:2px; background:var(--ivory); transition:all 0.3s ease; }
+.hamburger.open span:nth-child(1){ transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2){ opacity:0; }
+.hamburger.open span:nth-child(3){ transform: translateY(-8px) rotate(-45deg); }
+
+@media (max-width:860px){
+  .hamburger{ display:flex; }
+  nav.links{
+    position:fixed; top:0; right:-100%; width:80%; max-width:320px; height:100vh;
+    background:var(--forest-2); flex-direction:column; justify-content:center;
+    gap:28px; padding:40px; transition:right 0.35s ease; box-shadow:-10px 0 30px rgba(0,0,0,0.5);
+  }
+  nav.links.open{ right:0; }
+  nav.links a{ font-size:16px; }
+}
+
+/* ---------- LANDING HERO WITH FALLS BACKGROUND ---------- */
+.hero{
+  position:relative;
+  min-height:100vh;
+  overflow:hidden;
+  color:var(--ivory);
+  display:flex; flex-direction:column; justify-content:center;
+  padding-top:120px;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(180deg, rgba(26,36,28,0.72) 0%, rgba(26,36,28,0.86) 100%);
+  z-index:1;
+  pointer-events:none;
+}
+.hero-slideshow{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+.hero-slide{
+  position:absolute;
+  inset:0;
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  opacity:0;
+  transform:scale(1.03);
+  transition:opacity 1s ease, transform 1s ease;
+}
+.hero-slide.active{
+  opacity:1;
+  transform:scale(1);
+}
+.hero-slide:nth-child(1){ background-image:url("pictures/VIC FALSS  BACKGROUND.avif"); }
+.hero-slide:nth-child(2){ background-image:url("pictures/FLIGHT OF ANGELS.jpg"); }
+.hero-slide:nth-child(3){ background-image:url("pictures/game drive.avif"); }
+.hero-slide:nth-child(4){ background-image:url("pictures/VIC FALLS.avif"); }
+.hero-content{ position:relative; z-index:2; max-width:800px; }
+.hero h1{ font-size:clamp(46px, 8vw, 88px); font-weight:450; margin-top:12px; }
+.hero h1 em{ font-style:italic; color:var(--bronze-light); }
+.hero p.sub{
+  max-width:54ch; font-size:clamp(16px,1.8vw,19px); line-height:1.65;
+  color:rgba(251,248,241,0.85); margin-top:12px;
+}
+.hero-ctas{ display:flex; gap:18px; margin-top:38px; flex-wrap:wrap; }
+
+.trust-row{
+  position:relative; z-index:2; margin-top:76px; margin-bottom: 40px;
+  display:flex; gap:56px; flex-wrap:wrap;
+  border-top:1px solid var(--line-dark); padding-top:28px;
+}
+.trust-item .num{ font-family:'Fraunces', serif; font-size:32px; color:var(--bronze-light); }
+.trust-item .lbl{ font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(251,248,241,0.65); margin-top:6px; }
+
+/* ---------- ACTIVITIES GRID & CARDS WITH IMAGES ---------- */
+.experiences{ background:var(--sand); padding:100px 0; }
+.section-head{ max-width:640px; margin-bottom:48px; }
+.section-head h2{ font-size:clamp(32px,4.4vw,48px); margin-top:12px; color:var(--forest); }
+.section-head p{ margin-top:14px; font-size:16px; line-height:1.65; color:rgba(34,40,31,0.75); }
+
+.grid-exp{ display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:32px; }
+.exp-card{
+  background:var(--ivory);
+  border:1px solid var(--line-light);
+  overflow:hidden;
+  display:flex; flex-direction:column;
+  transition:transform .3s cubic-bezier(.2,.9,.2,1), box-shadow .3s ease;
+  border-radius:14px; box-shadow:0 18px 40px rgba(16,18,14,0.04);
+}
+.exp-card:hover{ transform:translateY(-4px); box-shadow:0 18px 32px -22px rgba(34,40,31,0.35); }
+.exp-img-wrap{ width:100%; height:200px; overflow:hidden; position:relative; }
+.exp-img-wrap img{ width:100%; height:100%; object-fit:cover; transition:transform .3s ease; }
+.exp-card:hover .exp-img-wrap img{ transform:scale(1.05); }
+
+.exp-body{ padding:24px; display:flex; flex-direction:column; gap:10px; flex:1; }
+.exp-num{ font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.1em; color:var(--bronze); text-transform:uppercase; }
+.exp-name{ font-size:22px; color:var(--ink); }
+.exp-desc{ font-size:14px; line-height:1.6; color:rgba(34,40,31,0.72); flex:1; }
+.exp-meta{ display:flex; align-items:center; justify-content:space-between; margin-top:12px; padding-top:16px; border-top:1px solid var(--line-light); }
+.leaf-rating{ display:flex; gap:4px; }
+.leaf-rating span{ width:7px; height:7px; border-radius:2px; background:var(--line-light); transform:rotate(45deg); }
+.leaf-rating span.on{ background:var(--bronze); }
+.exp-note{ font-family:'IBM Plex Mono', monospace; font-size:9px; letter-spacing:0.06em; text-transform:uppercase; color:rgba(34,40,31,0.5); margin-top:2px; }
+.activity-open{align-self:flex-start;margin-top:14px;border:1px solid rgba(166,111,48,.35);border-radius:999px;padding:10px 16px;background:linear-gradient(180deg,var(--bronze-light),var(--bronze));color:var(--forest-2);font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.04em;cursor:pointer;box-shadow:0 8px 18px rgba(16,24,20,.12),inset 0 1px 0 rgba(255,255,255,.3);transition:transform .2s ease,box-shadow .2s ease}
+.activity-open:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(16,24,20,.18),inset 0 1px 0 rgba(255,255,255,.35)}
+.activity-dialog{position:fixed;inset:0;margin:auto;width:min(1040px,calc(100% - 28px));max-width:none;max-height:92vh;overflow-y:auto;padding:0;border:1px solid rgba(255,255,255,.25);border-radius:24px;background:rgba(23,34,27,.96);color:var(--ivory);box-shadow:0 28px 100px rgba(0,0,0,.5);backdrop-filter:blur(24px)}
+.activity-dialog::backdrop{background:rgba(8,14,10,.75);backdrop-filter:blur(5px)}
+.activity-dialog-inner{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);position:relative}
+.activity-gallery{position:relative;min-height:440px;background:#101814;overflow:hidden;border-radius:24px 0 0 0}
+.activity-gallery img{width:100%;height:100%;min-height:440px;object-fit:cover;display:block}
+.activity-gallery-caption{position:absolute;left:16px;bottom:16px;padding:7px 11px;border-radius:999px;background:#101814c9;font-size:12px}
+.activity-gallery-arrow,.activity-gallery-close{position:absolute;z-index:2;border:1px solid #ffffff66;border-radius:50%;background:#101814bb;color:#fff;cursor:pointer}
+.activity-gallery-arrow{top:50%;transform:translateY(-50%);width:44px;height:44px;font-size:28px}.activity-gallery-prev{left:14px}.activity-gallery-next{right:14px}
+.activity-gallery-close{right:14px;top:14px;width:42px;height:42px;font-size:27px}
+.activity-info{padding:36px 32px;overflow:auto}.activity-info h2{font-size:clamp(27px,3vw,38px);margin:12px 0;color:var(--ivory)}.activity-info .activity-category{color:var(--bronze-light);font:11px 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase}.activity-info p{line-height:1.65;color:rgba(251,248,241,.82);margin:12px 0}.activity-info ul{padding-left:19px;display:grid;gap:9px;line-height:1.5;font-size:14px;margin:18px 0}.activity-info li::marker{color:var(--bronze-light)}.activity-thumbs{grid-column:1/-1;display:flex;gap:10px;padding:12px 16px 16px;overflow:auto}.activity-thumb{width:100px;height:66px;flex:0 0 auto;object-fit:cover;border-radius:10px;opacity:.62;border:2px solid transparent;cursor:pointer}.activity-thumb.active{opacity:1;border-color:var(--bronze-light)}
+@media(max-width:720px){.activity-dialog-inner{display:block}.activity-gallery,.activity-gallery img{min-height:260px;height:36vh;border-radius:24px 24px 0 0}.activity-info{padding:24px}.activity-thumbs{padding-bottom:14px}}
+
+/* ---------- FOOTER ---------- */
+footer{ background:var(--forest-2); color:rgba(251,248,241,0.55); padding:32px 0; border-top:1px solid var(--line-dark); }
+  
+  </style>
+  <link rel="stylesheet" href="styles.css">
+  </head>
+<body>
+
+<!-- NAVIGATION -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="name">Kondohwe</span>
+      <span class="tag">Travel Agent</span>
+    </a>
+    
+    <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="links" id="nav-links">
+      <a href="#activities" class="active">Activities</a>
+      <a href="accommodations.html">Accommodations</a>
+      <a href="seasons.html">Seasons</a>
+      <a href="plan.html">Plan</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- LANDING HERO WITH FALLS BACKGROUND IMAGE -->
+<section class="hero">
+  <div class="hero-slideshow">
+    <div class="hero-slide active"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+  </div>
+  <div class="wrap hero-content">
+    <p class="eyebrow">Zambezi River · Zimbabwe — Zambia</p>
+    <h1>The smoke that <em>thunders</em></h1>
+    <p class="sub">A kilometre-wide curtain of water drops into a basalt gorge and turns the sky to mist. Explore water sports, aerial tours, high-adrenaline adventures, and game safaris below.</p>
+    <div class="hero-ctas">
+      <a href="#activities" class="btn btn-primary">Browse All Activities</a>
+      <a href="accommodations.html" class="btn btn-book">Book Accommodation</a>
+      <a href="plan.html" class="btn btn-ghost">Plan Your Trip</a>
+    </div>
+  </div>
+
+  <div class="trust-row wrap">
+    <div class="trust-item"><div class="num">108m</div><div class="lbl">drop height</div></div>
+    <div class="trust-item"><div class="num">1.7km</div><div class="lbl">curtain width</div></div>
+    <div class="trust-item"><div class="num">1989</div><div class="lbl">UNESCO world heritage</div></div>
+    <div class="trust-item"><div class="num">7</div><div class="lbl">Natural Wonders</div></div>
+  </div>
+</section>
+
+<!-- COMPLETE ACTIVITIES CATALOGUE -->
+<section class="experiences" id="activities">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" style="color:var(--bronze);">Complete Experience Guide</p>
+      <h2>Things to Do at Victoria Falls</h2>
+      <p>From high-altitude leaps and white-water rapids to scenic walks and cross-border safaris.</p>
+    </div>
+
+    <div class="grid-exp">
+
+      <!-- 1. White-water Rafting -->
+      <div class="exp-card">
+        <div class="exp-img-wrap">
+          <img src="pictures/SIO_5981-1-scaled-1.webp" alt="White water rafting" loading="lazy" decoding="async" fetchpriority="low" width="320" height="200">
+        </div>
+        <div class="exp-body">
+          <span class="exp-num">Water & River</span>
+          <span class="exp-name">White-Water Rafting</span>
+          <p class="exp-desc">Navigate the powerful Grade V rapids of the Zambezi River through Batoka Gorge. Known globally as one of the ultimate one-day rafting runs.</p>
+          <div class="exp-meta">
+            <div class="leaf-rating"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Devil's Pool / Angel's Pool -->
+      <div class="exp-card">
+        <div class="exp-img-wrap">
+          <img src="pictures/Devil's & Angel's Pool.avif" alt="Devils Pool" loading="lazy" decoding="async" fetchpriority="low" width="320" height="200">
+        </div>
+        <div class="exp-body">
+          <span class="exp-num">Water & River</span>
+          <span class="exp-name">Devil's & Angel's Pool</span>
+          <p class="exp-desc">Swim right at the precipice edge of the waterfall on Livingstone Island (Zambian side). Guided access during low-water conditions.</p>
+          <div class="exp-meta">
+            <div class="leaf-rating"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Upper Zambezi Canoeing -->
+      <div class="exp-card">
+        <div class="exp-img-wrap">
+          <img src="pictures/Upper Zambezi Canoeing.jpg" alt="Canoeing Upper Zambezi" loading="lazy" decoding="async" fetchpriority="low" width="320" height="200">
+        </div>
+        <div class="exp-body">
+          <span class="exp-num">Water & River</span>
+          <span class="exp-name">Upper Zambezi Canoeing</span>
+          <p class="exp-desc">Paddle calm stretches of the upper river in two-person canoes, gliding past river islands and game drinking along the banks.</p>
+          <div class="exp-meta">
+            <div class="leaf-rating"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Bungee Jumping -->
+      <div class="exp-card">
+        <div class="exp-img-wrap">
+          <img src="pictures/Bridge Bungee Jump.jpg" alt="Bungee Jumping" loading="lazy" decoding="async" fetchpriority="low" width="320" height="200">
+        </div>
+        <div class="exp-body">
+          <span class="exp-num">Adrenaline & Heights</span>
+          <span class="exp-name">Bridge Bungee Jump</span>
+          <p class="exp-desc">Leap 111 meters off the historic Victoria Falls Bridge into the gorge below with the cascading falls framing your backdrop.</p>
+          <div class="exp-meta">
+            <div class="leaf-rating"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Gorge Swing & Flying Fox -->
+      <div class="exp-card">
+        <div class="exp-img-wrap">
+          <img src="pictures/Gorge Swing & Flying Fox.jpg" alt="Gorge Swing" loading="lazy" decoding="async" fetchpriority="low" width="320" height="200">
+        </div>
+        <div class="exp-body">
+          <span class="exp-num">Adrenaline & Heights</span>
+          <span class="exp-name">Gorge Swing & Flying Fox</span>
+          <p class="exp-desc">Step off the rim for a 70m free-fall before swinging out over Batoka Gorge, or cable-slide high above the abyss on the Flying Fox.</p>
+          <div class="exp-meta">
+            <div class="leaf-rating"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Zipline & Canopy Tours -->
+      <div class="exp-card">
+        <div class="exp-img-wrap">
+          <img src="pictures/Botswana-Victoria-Falls-Zipline-e1719482987977.webp" alt="Canopy Zipline" loading="lazy" decoding="async" fetchpriority="low" width="320" height="200">
+        </div>
+        <div class="exp-body">
+          <span class="exp-num">Adrenaline & Heights</span>
+          <span class="exp-name">Zipline & Canopy Tours</span>
+          <p class="exp-desc">Glide across deep chasms and through the hardwood forest canopy on a network of high cable slides and suspended walkways.</p>
+          <div class="exp-meta">
+            <div class="leaf-rating"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Flight of Angels (Helicopter) -->
+      <div class="exp-card">
+        <div class="exp-img-wrap">
+          <img src="pictures/HELICOPTER.avif" alt="Helicopter flight over Victoria Falls" loading="lazy" decoding="async" fetchpriority="low" width="320" height="200">
+        </div>
+        <div class="exp-body">
+          <span class="exp-num">Scenic & Air</span>
+          <span class="exp-name">Flight of Angels (Helicopter)</span>
+          <p class="exp-desc">Take a 12- or 25-minute flight looping over the massive fall curtain and down through the winding basalt gorges.</p>
+          <div class="exp-meta">
+            <div class="leaf-rating"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Microlight Flights -->
+      <div class="exp-card">
+        <div class="exp-img-wrap">
+          <img src="pictures/microlight-flight-zambia.jpg" alt="Microlight Flight" loading="lazy" decoding="async" fetchpriority="low" width="320" height="200">
+        </div>
+        <div class="exp-body">
+          <span class="exp-num">Scenic & Air</span>
+          <span class="exp-name">Microlight Flights</span>
+          <p class="exp-desc">Soar in an open-air light aircraft for unfiltered, wind-in-your-face aerial views and unique photographic angles of the spray.</p>
+          <div class="exp-meta">
+            <div class="leaf-rating"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Guided Rainforest Walks -->
+      <div class="exp-card">
+        <div class="exp-img-wrap">
+          <img src="https://assets.anantara.com/image/upload/q_auto%2Cf_auto%2Cc_limit%2Cw_1045/media/minor/anantara/images/royal-livingstone-by-anantara/leisure/activities/royal_livingstone_by_anantara_activities_vicfallsleisurewalk_984x532.jpg" alt="Rainforest walk path" loading="lazy" decoding="async" fetchpriority="low" width="320" height="200">
+        </div>
+        <div class="exp-body">
+          <span class="exp-num">Scenic & On Foot</span>
+          <span class="exp-name">Guided Rainforest Walk</span>
+          <p class="exp-desc">Walk the paths of Victoria Falls National Park across 16 key viewpoints, getting immersed in localized mist and rainbows.</p>
+          <div class="exp-meta">
+            <div class="leaf-rating"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. Game Drives -->
+      <div class="exp-card">
+        <div class="exp-img-wrap">
+          <img src="pictures/game drive.avif" alt="Safari game drive lion" loading="lazy" decoding="async" fetchpriority="low" width="320" height="200">
+        </div>
+        <div class="exp-body">
+          <span class="exp-num">Wildlife & Land</span>
+          <span class="exp-name">Reserve Game Drives</span>
+          <p class="exp-desc">Spot elephants, rhinos, lions, and buffaloes on 4x4 open safari vehicle drives in Victoria Falls Private Game Reserve or Zambezi NP.</p>
+          <div class="exp-meta">
+            <div class="leaf-rating"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. Chobe Day Trip -->
+      <div class="exp-card">
+        <div class="exp-img-wrap">
+          <img src="pictures/botswana-chobe-elephant.jpg" alt="Elephant in Chobe" loading="lazy" decoding="async" fetchpriority="low" width="320" height="200">
+        </div>
+        <div class="exp-body">
+          <span class="exp-num">Wildlife & Land</span>
+          <span class="exp-name">Chobe National Park Day Trip</span>
+          <p class="exp-desc">Cross into Botswana for a full-day adventure including a Chobe River safari cruise and afternoon 4x4 drive in elephant territory.</p>
+          <div class="exp-meta">
+            <div class="leaf-rating"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13. Horseback / Nature Trails -->
+      <div class="exp-card">
+        <div class="exp-img-wrap">
+          <img src="pictures/Horse-Riding-aroun-Vic-Falls-6.jpeg" alt="Horseback ride in bush" loading="lazy" decoding="async" fetchpriority="low" width="320" height="200">
+        </div>
+        <div class="exp-body">
+          <span class="exp-num">Wildlife & Land</span>
+          <span class="exp-name">Horseback & Bush Trails</span>
+          <p class="exp-desc">Ride through African teak forests and national park bushlands along the riverbanks, tracking wildlife silently on horseback.</p>
+          <div class="exp-meta">
+            <div class="leaf-rating"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. The Boma Dinner & Drum Show -->
+      <div class="exp-card">
+        <div class="exp-img-wrap">
+          <img src="pictures/BOMA.jpg" alt="African night drum show" loading="lazy" decoding="async" fetchpriority="low" width="320" height="200">
+        </div>
+        <div class="exp-body">
+          <span class="exp-num">Culture & Leisure</span>
+          <span class="exp-name">The Boma Dinner & Drum Show</span>
+          <p class="exp-desc">An immersive evening featuring traditional buffet delicacies, local dancers, face painting, and interactive djembe drumming.</p>
+          <div class="exp-meta">
+            <div class="leaf-rating"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15. High Tea at Victoria Falls Hotel -->
+      <div class="exp-card">
+        <div class="exp-img-wrap">
+          <img src="pictures/VictoriaFallsHotelHighTea-700x465.jpg" alt="High tea setting" loading="lazy" decoding="async" fetchpriority="low" width="320" height="200">
+        </div>
+        <div class="exp-body">
+          <span class="exp-num">Culture & Leisure</span>
+          <span class="exp-name">High Tea at Victoria Falls Hotel</span>
+          <p class="exp-desc">Savor tea, pastries, and sandwiches on Stanley's Terrace overlooking the historic Victoria Falls Bridge and spray plumes.</p>
+          <div class="exp-meta">
+            <div class="leaf-rating"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 16. Village & Township Tours -->
+      <div class="exp-card">
+        <div class="exp-img-wrap">
+          <img src="pictures/victoria-falls-zimbabwe-village-tour_ZbopW.jpg" alt="Local village culture" loading="lazy" decoding="async" fetchpriority="low" width="320" height="200">
+        </div>
+        <div class="exp-body">
+          <span class="exp-num">Culture & Leisure</span>
+          <span class="exp-name">Village & Township Tours</span>
+          <p class="exp-desc">Meet local residents in nearby authentic rural villages or Chinotimba township to learn about regional customs, traditions, and history.</p>
+          <div class="exp-meta">
+            <div class="leaf-rating"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>KONDOHWE TRAVEL AGENT · VICTORIA FALLS</span>
+    <span>ZIMBABWE · ZAMBIA · BOTSWANA</span>
+  </div>
+</footer>
+
+<dialog class="activity-dialog" id="activity-dialog" aria-labelledby="activity-dialog-title">
+  <div class="activity-dialog-inner">
+    <button class="activity-gallery-close" type="button" aria-label="Close activity gallery">×</button>
+    <div class="activity-gallery">
+      <img id="activity-gallery-image" alt="" fetchpriority="high" decoding="async">
+      <button class="activity-gallery-arrow activity-gallery-prev" type="button" aria-label="Previous photo">‹</button>
+      <button class="activity-gallery-arrow activity-gallery-next" type="button" aria-label="Next photo">›</button>
+      <span class="activity-gallery-caption" id="activity-gallery-caption"></span>
+    </div>
+    <div class="activity-info">
+      <span class="activity-category" id="activity-category"></span>
+      <h2 id="activity-dialog-title"></h2>
+      <p id="activity-summary"></p>
+      <ul id="activity-facts"></ul>
+      <a class="btn btn-primary" id="activity-enquire" href="contact.html">Enquire about this activity</a>
+    </div>
+    <div class="activity-thumbs" id="activity-thumbs" aria-label="Activity photos"></div>
+  </div>
+</dialog>
+
+<script>
+// Mobile Hamburger Menu Toggle Script
+(function(){
+  var btn = document.getElementById('hamburger-btn');
+  var menu = document.getElementById('nav-links');
+
+  if(btn && menu){
+    btn.addEventListener('click', function(){
+      btn.classList.toggle('open');
+      menu.classList.toggle('open');
+    });
+
+    // Close menu when clicking outside or clicking a link
+    menu.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        btn.classList.remove('open');
+        menu.classList.remove('open');
+      });
+    });
+  }
+
+  var slides = document.querySelectorAll('.hero-slide');
+  var activeIndex = 0;
+  if (slides.length > 1) {
+    setInterval(function(){
+      slides[activeIndex].classList.remove('active');
+      activeIndex = (activeIndex + 1) % slides.length;
+      slides[activeIndex].classList.add('active');
+    }, 6000);
+  }
+
+  var activityInfo = [
+    {facts:['Runs through the Zambezi River gorge below the Falls on a series of powerful rapids.','The river’s changing water level affects the route and season; check operating dates before booking.','Guided trips include a safety briefing and a hike in and out of the gorge.'],source:'https://www.shearwatervictoriafalls.com/experience/white-water-rafting'},
+    {facts:['The pools are reached on a guided visit to Livingstone Island on the Zambian side.','Swimming access changes with river conditions: Devil’s Pool and Angel’s Pool are seasonal.','The island experience includes a boat transfer and guided visit; book ahead because capacity is limited.'],source:'https://livingstoneisland.com/experiences'},
+    {facts:['Canoe trips follow calmer upper Zambezi channels among islands and riverbank vegetation.','The experience combines paddling with bird and wildlife viewing from the water.','Ask the operator about current levels, trip length, transfers and the required paddling experience.'],source:'https://www.livingstonetourism.com/livingstone-adventure-cruises/'},
+    {facts:['The jump launches from the historic Victoria Falls Bridge above Batoka Gorge.','The operator describes a 111-metre jump with roughly four seconds of free fall.','Check weight, age, medical and weather requirements with the operator before booking.'],source:'https://www.shearwatervictoriafalls.com/experience/victoria-falls-bridge-adventures/'},
+    {facts:['Bridge Swing begins with a free fall before the harness swings out over Batoka Gorge.','The bridge operator lists a 70-metre free fall and offers solo or tandem swing options.','Ask about weight limits, clothing, footwear and weather restrictions before your visit.'],source:'https://www.shearwatervictoriafalls.com/experience/victoria-falls-bridge-adventures/'},
+    {facts:['The bridge slide runs on a cable over Batoka Gorge between Zambia and Zimbabwe.','Canopy tours are a separate forest activity with suspended walkways and zip lines.','Confirm which experience is included in your booking and whether a border crossing is involved.'],source:'https://www.shearwatervictoriafalls.com/experience/victoria-falls-bridge-adventures/'},
+    {facts:['Scenic flights give an aerial view of the Falls, Zambezi River, bridge and Batoka Gorge.','Some flight routes continue over nearby wilderness areas; routes and duration depend on the option booked.','Flight operations depend on weather, and passenger-weight rules may apply.'],source:'https://www.shearwatervictoriafalls.com/experience/helicopter-experience/'},
+    {facts:['Microlight flights offer open-air views of the Falls and the gorge carved by the Zambezi.','The operator sets age, weight and weather conditions; confirm these before choosing a departure.','Bring secure eyewear and follow the pilot’s instructions for cameras and loose items.'],source:'https://www.livingstonetourism.com/livingstones-adventure-flights/'},
+    {facts:['The rainforest trail follows viewpoints along the Zimbabwe side of Victoria Falls.','Expect spray and wet paths when the river is high; visibility and rainbow conditions change with water levels.','Allow time for the walk and check park opening, entry and crossing requirements for your itinerary.'],source:'https://www.zimparks.org/parks/national-parks/victoria-falls/'},
+    {facts:['Open-vehicle game drives explore nearby wildlife areas with a professional guide.','Animals are wild, so sightings vary by season, time of day and conditions.','Ask which reserve or park the drive visits, and whether transfers and park fees are included.'],source:'https://www.shearwatervictoriafalls.com/experience/water-adventures/'},
+    {facts:['A typical day trip crosses into Botswana and pairs a Chobe River cruise with a land-based game drive.','The day involves an international border crossing; passport and visa requirements depend on your nationality.','Confirm the itinerary, meals, transfers and border documentation with the operator in advance.'],source:'https://batonkaguestlodge.com/chobe-day-trip/'},
+    {facts:['Guided rides travel through bush and woodland on horseback, offering a quieter way to experience the landscape.','Riders may be grouped by experience and ability; tell the operator your riding level when booking.','Confirm age, weight, safety equipment and whether wildlife sightings are expected on the selected route.'],source:'https://www.livingstonetourism.com/be-challenged/'},
+    {facts:['The Boma is an evening dining and entertainment experience in Victoria Falls.','The programme combines a meal with drumming and cultural performances, with audience participation.','Check the current schedule, transfer options and dietary arrangements when making a reservation.'],source:'https://www.victoriafalls-safari-lodge.com/the-boma-dinner-and-drum-show/'},
+    {facts:['High tea is served at Stanley’s Terrace at the Victoria Falls Hotel.','The terrace is known for views toward the Victoria Falls Bridge and gorge.','Confirm service times and reservation requirements with the hotel, especially in busy periods.'],source:'https://www.victoriafallshotel.com/dining'},
+    {facts:['A guided visit introduces guests to local community life, history and customs around Victoria Falls.','Choose a community-led operator and ask how visits support local residents.','Let your guide explain etiquette and ask before photographing people or homes.'],source:'https://www.livingstonetourism.com/' }
+  ];
+  var activityPhotos = [
+    {src:'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/1b/36/ed/whitewater-rafting-over.jpg?h=900&s=1&w=1200',page:'https://www.tripadvisor.com/Attraction_Review-g293761-d5571423-Reviews-Whitewater_Rafting_In_Victoria_Falls_With_Shearwater-Victoria_Falls_Matabeleland_.html',alt:'Rafting team riding a Zambezi rapid',caption:'Zambezi white-water rafting'},
+    {src:'https://livingstoneisland.com/img/Activities/Livingstone_Island_Breezer/Livingstone_Island_Breezer_4.jpg',page:'https://livingstoneisland.com/trips/',alt:'Visitors at Devil’s Pool on Livingstone Island',caption:'Livingstone Island pools'},
+    {src:'https://www.victoriafallstransfers.com/wp-content/uploads/2018/02/Upper-Zambezi-Canoe-Safari-4.jpg',page:'https://www.victoriafallstransfers.com/tour/upper-zambezi-canoe-safari/',alt:'Canoe safari on the Upper Zambezi',caption:'Upper Zambezi canoe safari'},
+    {src:'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/bb/7c/e5/caption.jpg?h=1200&s=1&w=1200',page:'https://www.tripadvisor.com.tr/Attraction_Review-g293761-d1380859-Reviews-Victoria_Falls_Bungee_Shearwater-Victoria_Falls_Matabeleland_North_Province.html',alt:'Bungee jumper leaping from Victoria Falls Bridge',caption:'Victoria Falls Bridge bungee'},
+    {src:'https://goldenpangolin.com/storage/activities/USY4bxhPBTq6p04iSvRAkOuZ6pTwlrXzrEi8yZnV.jpg',page:'https://goldenpangolin.com/packages/destinations/1',alt:'Gorge swing over Batoka Gorge',caption:'Batoka Gorge swing'},
+    {src:'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/19/9e/46/solo-bridge-slide.jpg?h=-1&s=1&w=1200',page:'https://www.tripadvisor.com.au/Attraction_Review-g293761-d1380859-Reviews-Shearwater_Victoria_Falls-Victoria_Falls_Matabeleland_North_Province.html',alt:'Visitor on the bridge slide zipline',caption:'Bridge slide over the gorge'},
+    {src:'https://images.myguide-cdn.com/zimbabwe/companies/livingstone-victoria-falls-helicopter-flights/large/livingstone-victoria-falls-helicopter-flights-2528591.jpg',page:'https://www.myguidezimbabwe.com/experiences/livingstone-victoria-falls-helicopter-flights',alt:'Helicopter flying beside Victoria Falls',caption:'Helicopter flight over the Falls'},
+    {src:'https://www.zambiatourism.com/media/Microlight-Vic-Falls.jpg',page:'https://www.zambiatourism.com/activities/livingstone/',alt:'Microlight aircraft above the Victoria Falls landscape',caption:'Microlight flight'},
+    {src:'https://assets.anantara.com/image/upload/q_auto%2Cf_auto%2Cc_limit%2Cw_1045/media/minor/anantara/images/royal-livingstone-by-anantara/leisure/activities/royal_livingstone_by_anantara_activities_vicfallsleisurewalk_984x532.jpg',page:'https://www.anantara.com/en/royal-livingstone/leisure',alt:'Walkway view through the Victoria Falls rainforest',caption:'Rainforest viewpoint walk'},
+    {src:'https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0d/c1/3f/9c.jpg',page:'https://www.wonderfulzimbabwe.com/tour-detail/victoria-falls-full-day-game-drive-with-lunch/',alt:'Open safari vehicle on a Victoria Falls game drive',caption:'Wildlife game drive'},
+    {src:'https://batonkaguestlodge.com/wp-content/uploads/2018/10/Chobe-Day-Trip-6.jpg',page:'https://batonkaguestlodge.com/chobe-day-trip/',alt:'Chobe river boat safari viewing elephants',caption:'Chobe river safari'},
+    {src:'https://www.victoriafalls-guide.net/image-files/horse-safari-ele1.jpg',page:'https://www.victoriafalls-guide.net/horse-safari.html',alt:'Riders on horseback viewing elephants in the bush',caption:'Horseback safari'},
+    {src:'https://vfsc-umbraco.live.fireworkx.net/media/rbbbwcvr/entertainment-at-the-boma-dinner-drum-show.jpg',page:'https://victoria-falls-safari-collection.com/en-US/wine-and-dine/the-boma-dinner-drum-show/gallery',alt:'Traditional drummers performing at The Boma',caption:'The Boma drum show'},
+    {src:'https://cdn.trailfinders.com/y2hvq11ax0_high%20tea%20on%20stanleys%20terrace%203%20_1500x1500.jpg?width=1920',page:'https://www.trailfinders.com/tours/africa/zimbabwe/tour-high-tea-at-the-victoria-falls-hotel',alt:'High tea served on Stanley’s Terrace',caption:'Stanley’s Terrace high tea'},
+    {src:'https://waybird.imgix.net/experiences/kodak_images/000/016/352/original/Take_a_tour_of_Chinotimba_Township.wetu.jpg?auto=format&crop=fill&q=50',page:'https://www.timbuktutravel.com/experience/take-a-tour-of-chinotimba-township-victoria-falls',alt:'Thatched homes on a guided Chinotimba township visit',caption:'Chinotimba community tour'}
+  ];
+  var cards=Array.from(document.querySelectorAll('.exp-card'));
+  var dialog=document.getElementById('activity-dialog');
+  var galleryImage=document.getElementById('activity-gallery-image');
+  var galleryThumbs=document.getElementById('activity-thumbs');
+  var galleryIndex=0, galleryPhotos=[];
+  function showActivityPhoto(n){galleryIndex=(n+galleryPhotos.length)%galleryPhotos.length;var photo=galleryPhotos[galleryIndex];galleryImage.onerror=function(){if(galleryIndex>0){galleryImage.onerror=null;galleryImage.src=galleryPhotos[0].src;galleryImage.alt=galleryPhotos[0].alt;}};galleryImage.src=photo.src;galleryImage.alt=photo.alt;document.getElementById('activity-gallery-caption').textContent=photo.caption;galleryThumbs.querySelectorAll('img').forEach(function(el,i){el.classList.toggle('active',i===galleryIndex);});}
+  function openActivity(card,index){
+    var title=card.querySelector('.exp-name').textContent.trim(),category=card.querySelector('.exp-num').textContent.trim(),summary=card.querySelector('.exp-desc').textContent.trim(),info=activityInfo[index]||{facts:[],source:'https://www.livingstonetourism.com/'},onlinePhoto=activityPhotos[index];
+    var main=card.querySelector('.exp-img-wrap img');
+    galleryPhotos=[{src:main.getAttribute('src'),alt:main.alt,caption:title,page:'#'}];
+    if(onlinePhoto)galleryPhotos.push(onlinePhoto);
+    document.getElementById('activity-dialog-title').textContent=title;document.getElementById('activity-category').textContent=category;document.getElementById('activity-summary').textContent=summary;
+    var facts=document.getElementById('activity-facts');facts.replaceChildren();info.facts.forEach(function(text){var li=document.createElement('li');li.textContent=text;facts.appendChild(li);});
+    document.getElementById('activity-enquire').href='contact.html?activity='+encodeURIComponent(title);
+    galleryThumbs.replaceChildren();galleryPhotos.forEach(function(photo,i){var t=document.createElement('img');t.src=photo.src;t.alt='';t.loading='lazy';t.decoding='async';t.className='activity-thumb';t.addEventListener('click',function(){showActivityPhoto(i);});galleryThumbs.appendChild(t);});
+    showActivityPhoto(0);dialog.showModal();
+  }
+  cards.forEach(function(card,index){var button=document.createElement('button');button.type='button';button.className='activity-open';button.textContent='Explore activity · Photos & details';button.addEventListener('click',function(){openActivity(card,index);});card.querySelector('.exp-body').appendChild(button);});
+  dialog.querySelector('.activity-gallery-close').addEventListener('click',function(){dialog.close();});
+  dialog.querySelector('.activity-gallery-prev').addEventListener('click',function(){showActivityPhoto(galleryIndex-1);});
+  dialog.querySelector('.activity-gallery-next').addEventListener('click',function(){showActivityPhoto(galleryIndex+1);});
+  dialog.addEventListener('click',function(e){if(e.target===dialog)dialog.close();});
+  document.addEventListener('keydown',function(e){if(!dialog.open)return;if(e.key==='ArrowLeft')showActivityPhoto(galleryIndex-1);if(e.key==='ArrowRight')showActivityPhoto(galleryIndex+1);});
+})();
+</script>
+<a href="https://wa.me/263776840785?text=Hello%20Victoria%20Falls%20team%2C%20I%20would%20like%20to%20ask%20about%20activity%20bookings%20and%20accommodation%20options." class="btn-whatsapp whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contact on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.272-.1-.47-.149-.67.149s-.767.967-.94 1.166c-.173.199-.347.223-.644.075-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.173.198-.298.298-.497.099-.199.05-.373-.025-.522-.075-.149-.67-1.612-.92-2.207-.242-.579-.487-.5-.67-.51l-.571-.01c-.199 0-.522.075-.796.373s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.075-.124-.272-.199-.57-.348z" fill="currentColor"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.004 2.003C6.478 2.003 2.004 6.478 2.004 12c0 2.115.69 4.105 1.876 5.727L2 22l4.47-1.169A9.937 9.937 0 0 0 12.004 22c5.526 0 10.001-4.475 10.001-10S17.53 2.003 12.004 2.003zm0 18.03c-1.54 0-3.03-.403-4.312-1.165l-.308-.184-2.643.693.706-2.576-.2-.33A7.971 7.971 0 0 1 4.004 12c0-4.418 3.586-8.002 8-8.002 4.417 0 8.001 3.585 8.001 8.002 0 4.418-3.584 8.001-8.001 8.001z" fill="currentColor"/>
+  </svg>
+</a>
+</body>
+</html>
