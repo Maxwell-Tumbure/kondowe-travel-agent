@@ -60,6 +60,11 @@ nav.links a.cta{ opacity:1; background:var(--bronze); color:var(--forest-2); pad
 .plan-item h3{ font-size:22px; color:var(--forest); margin-top:10px; }
 .plan-item p{ font-size:14px; line-height:1.6; color:rgba(34,40,31,0.8); margin-top:10px; }
 
+@media (max-width:720px){
+  .plan-grid{ grid-template-columns:1fr; gap:20px; padding:36px 0 48px; }
+  .plan-item{ padding:24px 20px; }
+}
+
 .footer{ background:var(--forest-2); color:rgba(251,248,241,0.55); padding:32px 0; border-top:1px solid var(--line-dark); }
 .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; font-family:'IBM Plex Mono', monospace; font-size:11px; }
 

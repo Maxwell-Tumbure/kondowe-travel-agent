@@ -64,7 +64,7 @@ input, select, textarea{ width:100%; padding:14px; font-family:'Work Sans', sans
 select{ appearance:auto; }
 input:focus, select:focus, textarea:focus{ border-color:var(--bronze); }
 button.btn-submit{ background:var(--forest); color:var(--ivory); font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; padding:16px; border:none; cursor:pointer; font-weight:500; }
-button.btn-submit:hover{ background:var(--forest-2); }
+button.btn-submit:hover{ background:linear-gradient(180deg,var(--bronze-light),var(--bronze)); color:var(--forest-2); }
 .button-row{ display:flex; flex-wrap:wrap; gap:14px; margin-top:12px; align-items:center; }
 .agent-card{margin:0 0 52px;padding:22px;border:1px solid #ffffff4a;border-radius:20px;background:rgba(255,255,255,.32);backdrop-filter:blur(16px);box-shadow:0 14px 40px rgba(16,24,18,.08)}
 .agent-card h2{font-size:25px;color:var(--forest);margin-bottom:12px}.agent-card p{margin:7px 0;color:var(--ink)}.agent-card a{color:var(--forest);text-decoration:none}.inquiry-context{display:none;margin-bottom:24px;padding:18px 20px;border-left:3px solid var(--bronze);border-radius:0 14px 14px 0;background:rgba(239,230,212,.7)}.inquiry-context h2{font-size:22px;margin-bottom:8px}.inquiry-context p{font-size:14px;line-height:1.6}.inquiry-context a{display:inline-block;margin:10px 12px 0 0;color:var(--forest);font-size:13px;text-underline-offset:3px}
@@ -116,82 +116,37 @@ button.btn-submit:hover{ background:var(--forest-2); }
   <form id="inquiry-form">
     <div class="form-grid">
       <div class="form-group">
-        <label for="name">Full Name *</label>
+        <label for="name">Full Name</label>
         <input type="text" id="name" autocomplete="name" required>
       </div>
       <div class="form-group">
-        <label for="email">Email Address *</label>
+        <label for="email">Email</label>
         <input type="email" id="email" autocomplete="email" required>
       </div>
       <div class="form-group">
-        <label for="phone">Phone / WhatsApp *</label>
-        <input type="tel" id="phone" autocomplete="tel" placeholder="Include country code" required>
+        <label for="phone">Phone / WhatsApp</label>
+        <input type="tel" id="phone" autocomplete="tel" required>
       </div>
       <div class="form-group">
-        <label for="nationality">Nationality / Country of Residence *</label>
-        <input type="text" id="nationality" autocomplete="country-name" required>
-      </div>
-      <div class="form-group">
-        <label for="arrival">Arrival Date *</label>
+        <label for="arrival">Arrival Date</label>
         <input type="date" id="arrival" required>
       </div>
       <div class="form-group">
-        <label for="departure">Departure Date *</label>
+        <label for="departure">Departure Date</label>
         <input type="date" id="departure" required>
       </div>
       <div class="form-group">
-        <label for="adults">Adults *</label>
-        <input type="number" id="adults" min="1" max="30" value="2" required>
-      </div>
-      <div class="form-group">
-        <label for="children">Children &amp; Ages</label>
-        <input type="text" id="children" placeholder="e.g. 2 children, ages 6 and 10">
-      </div>
-      <div class="form-group">
-        <label for="accommodation">Accommodation Preference *</label>
-        <select id="accommodation" required>
-          <option value="">Please choose</option>
-          <option>Luxury lodge or hotel</option>
-          <option>Mid-range hotel or lodge</option>
-          <option>Budget accommodation</option>
-          <option>Camping</option>
-          <option>Not sure — please recommend</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="rooming">Rooming / Bed Preference</label>
-        <input type="text" id="rooming" placeholder="e.g. 1 double room and 1 twin room">
+        <label for="travellers">Travellers</label>
+        <input type="number" id="travellers" min="1" max="30" value="2" required>
       </div>
       <div class="form-group full-width">
-        <label for="activities">Activities &amp; Experiences</label>
-        <input type="text" id="activities" placeholder="e.g. Victoria Falls, rafting, safari, sunset cruise">
-      </div>
-      <div class="form-group">
-        <label for="transfers">Transfers &amp; Transport</label>
-        <select id="transfers">
-          <option value="">Please choose</option>
-          <option>Airport / border transfers</option>
-          <option>Local transfers only</option>
-          <option>Self-drive advice</option>
-          <option>Full transport planning</option>
-          <option>Not required</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="budget">Estimated Budget per Person</label>
-        <input type="text" id="budget" placeholder="Currency and range, if known">
-      </div>
-      <div class="form-group full-width">
-        <label for="requirements">Dietary, Medical, Accessibility or Visa Requirements</label>
-        <textarea id="requirements" rows="3" placeholder="Please do not include passport numbers or other sensitive document details."></textarea>
-      </div>
-      <div class="form-group full-width">
-        <label for="message">Additional Information or Questions *</label>
-        <textarea id="message" rows="5" placeholder="Tell us what would make this trip special, including preferred pace or interests." required></textarea>
+        <label for="message">Trip Details</label>
+        <textarea id="message" rows="5" required></textarea>
       </div>
     </div>
     <div class="button-row">
-      <button type="submit" class="btn-submit">Prepare Inquiry</button>
+      <button type="button" class="btn-submit" id="whatsapp-submit">Proceed with WhatsApp</button>
+      <button type="button" class="btn-submit" id="email-submit">Proceed with Email</button>
     </div>
   </form>
 </div>
@@ -226,10 +181,52 @@ button.btn-submit:hover{ background:var(--forest-2); }
   var params=new URLSearchParams(location.search),property=params.get('property'),activity=params.get('activity'),details=params.get('details');
   var context=document.getElementById('inquiry-context');
   if(property||activity){var subject=activity||property;context.style.display='block';document.getElementById('inquiry-property').textContent='Inquiry about '+subject;var lines=(details||'').split('\n').filter(Boolean);document.getElementById('inquiry-details').textContent=lines.length?'Property information: '+lines.join(' '):activity?'Please share your preferred dates, group size and questions about this activity.':'Please share your travel dates and questions for this property.';document.getElementById('message').value=activity?'Hello, I would like to enquire about '+activity+'. Please share availability and help me plan this activity.':'Hello, I would like to enquire about '+property+'. Please share availability and help me plan this stay.';}
-  document.getElementById('inquiry-form').addEventListener('submit',function(e){e.preventDefault();var subject=property?'Kondohwe Travel Agent accommodation inquiry: '+property:'Kondohwe Travel Agent travel inquiry';var fields=['name','email','phone','nationality','arrival','departure','adults','children','accommodation','rooming','activities','transfers','budget','requirements','message'];var body=fields.map(function(id){var field=document.getElementById(id);return field.previousElementSibling.textContent.replace(' *','')+': '+field.value;}).join('\n');document.getElementById('agent-email-status').textContent='Inquiry prepared — please send the details to Kari or Alice by email or WhatsApp.';alert('Your inquiry is ready to send to Kondohwe Travel Agent.');});
+  var form = document.getElementById('inquiry-form');
+  var requiredFields = ['name','email','phone','arrival','departure','travellers','message'];
+
+  function gatherInquirySummary(){
+    var summary = [];
+    requiredFields.forEach(function(id){
+      var field = document.getElementById(id);
+      if (!field) return;
+      var label = field.previousElementSibling ? field.previousElementSibling.textContent.trim() : id;
+      summary.push(label + ': ' + (field.value || ''));
+    });
+    return summary.join('\n');
+  }
+
+  function validateForm(){
+    var valid = true;
+    requiredFields.forEach(function(id){
+      var field = document.getElementById(id);
+      if (!field || !field.value.trim()) {
+        valid = false;
+      }
+    });
+    return valid;
+  }
+
+  document.getElementById('whatsapp-submit').addEventListener('click', function(){
+    if (!validateForm()) {
+      alert('Please complete all required fields before continuing with WhatsApp.');
+      return;
+    }
+    var text = encodeURIComponent('Hello Kondohwe Travel Agent,\n\n' + gatherInquirySummary());
+    window.open('https://wa.me/263776840785?text=' + text, '_blank');
+  });
+
+  document.getElementById('email-submit').addEventListener('click', function(){
+    if (!validateForm()) {
+      alert('Please complete all required fields before continuing with email.');
+      return;
+    }
+    var subject = encodeURIComponent('Travel inquiry from ' + document.getElementById('name').value.trim());
+    var body = encodeURIComponent(gatherInquirySummary());
+    window.location.href = 'mailto:info@kondohwe.com?subject=' + subject + '&body=' + body;
+  });
+
+  form.addEventListener('submit',function(e){e.preventDefault();});
 })();
 </script>
 </body>
-<script src="scripts.js"></script>
-</html>
 </html>
